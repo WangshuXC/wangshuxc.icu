@@ -50,7 +50,7 @@ export function Features() {
     },
     {
       title: 'SEO Friendly',
-      description: 'The Better-SaaS is SEO-Ready out of the box, no extra work required',
+      description: 'The WangshuXC is SEO-Ready out of the box, no extra work required',
       icon: <IconHeart />,
     },
   ];

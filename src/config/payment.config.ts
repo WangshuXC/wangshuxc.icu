@@ -107,7 +107,7 @@ export const paymentConfig: PaymentConfig = {
   invoice: {
     footer: 'Thank you for your business! If you have any questions, please contact our support team.',
     logo: '/logo.png',
-    supportEmail: 'support@better-saas.com',
+    supportEmail: 'support@wangshuxc.icu',
   },
 
   // Billing configuration

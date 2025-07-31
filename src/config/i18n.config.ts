@@ -2,13 +2,13 @@ import type { I18nConfig } from "@/types";
 
 export const i18nConfig: I18nConfig = {
   // Supported languages
-  locales: ['en', 'zh'] as const,
+  locales: ['zh', 'en' ] as const,
   
   // Default language
-  defaultLocale: 'en',
+  defaultLocale: 'zh',
   
   // Fallback language
-  fallbackLocale: 'en',
+  fallbackLocale: 'zh',
   
   // Language configurations
   languages: {

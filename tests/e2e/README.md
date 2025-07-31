@@ -54,7 +54,7 @@ tests/e2e/
 
 1. **Node.js**: 版本 18 或更高
 2. **pnpm**: 项目包管理器
-3. **应用程序**: 确保应用在 `http://localhost:3000` 运行
+3. **应用程序**: 确保应用在 `http://localhost:3050` 运行
 
 ### 安装依赖
 
@@ -74,7 +74,7 @@ pnpm playwright install
 # .env.test
 DATABASE_URL="postgresql://test_user:test_password@localhost:5432/test_db"
 BETTER_AUTH_SECRET="test-secret-key"
-NEXT_PUBLIC_APP_URL="http://localhost:3000"
+NEXT_PUBLIC_APP_URL="http://localhost:3050"
 ADMIN_EMAILS="admin@test.com"
 ```
 
@@ -200,7 +200,7 @@ pnpm test:e2e:ui
 pnpm test:e2e --debug
 
 # 生成测试代码
-pnpm playwright codegen http://localhost:3000
+pnpm playwright codegen http://localhost:3050
 ```
 
 ### 不同浏览器测试
@@ -618,7 +618,7 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   
   use: {
-    baseURL: 'http://localhost:3000',
+    baseURL: 'http://localhost:3050',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
@@ -632,7 +632,7 @@ export default defineConfig({
   
   webServer: {
     command: 'pnpm dev',
-    url: 'http://localhost:3000',
+    url: 'http://localhost:3050',
     reuseExistingServer: !process.env.CI,
   },
 });

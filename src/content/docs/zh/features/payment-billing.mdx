@@ -332,7 +332,7 @@ stripe login
 将事件转发到本地服务器：
 
 ```bash
-stripe listen --forward-to localhost:3000/api/webhooks/stripe
+stripe listen --forward-to localhost:3050/api/webhooks/stripe
 ```
 
 webhook 密钥会在终端中打印出来。复制它并将其添加到您的 `.env` 文件中：
@@ -934,7 +934,7 @@ export const STRIPE_TEST_CARDS = {
 stripe login
 
 # 将 webhook 转发到本地开发
-stripe listen --forward-to localhost:3000/api/webhooks/stripe
+stripe listen --forward-to localhost:3050/api/webhooks/stripe
 
 # 触发测试事件
 stripe trigger customer.subscription.created

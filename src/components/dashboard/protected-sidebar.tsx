@@ -77,10 +77,10 @@ export function ProtectedSidebar({ collapsed, onToggle, sidebarGroups }: Protect
         {!collapsed && (
           <div className="flex items-center space-x-2">
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-              <span className="font-bold text-primary-foreground text-sm">BS</span>
+              <span className="font-bold text-primary-foreground text-sm">XC</span>
             </div>
             <Link href="/">
-              <span className="font-semibold text-lg">Better-SaaS</span>
+              <span className="font-semibold text-lg">WangshuXC</span>
             </Link>
           </div>
         )}

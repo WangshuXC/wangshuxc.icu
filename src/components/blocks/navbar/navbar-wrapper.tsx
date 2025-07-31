@@ -2,12 +2,14 @@
 
 import { Navbar } from './navbar';
 import { useNavbar } from '@/hooks/use-navbar';
+import { NewNavbar } from '../newNav/resize-nav';
 
 export function NavbarWrapper() {
   const navbarData = useNavbar();
-  
+
   return (
-    <Navbar
+    <>
+      {/* <Navbar
       logo={navbarData.logo}
       menu={navbarData.menu}
       auth={navbarData.auth}
@@ -16,6 +18,8 @@ export function NavbarWrapper() {
       isLoading={navbarData.isLoading}
       isInitialized={navbarData.isInitialized}
       onPricingClick={navbarData.handlePricingClick}
-    />
+    /> */}
+      <NewNavbar />
+    </>
   );
 } 

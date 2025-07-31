@@ -586,7 +586,7 @@ sudo systemctl start better-saas
 
 # 健康检查
 sleep 30
-if curl -f http://localhost:3000/health > /dev/null 2>&1; then
+if curl -f http://localhost:3050/health > /dev/null 2>&1; then
     echo "回滚成功！应用运行正常。"
 else
     echo "回滚失败！应用无响应。"
@@ -812,7 +812,7 @@ ssh user@server 'sudo journalctl -u better-saas -f'
 
 # 本地测试部署
 docker-compose up -d
-curl -f http://localhost:3000/health
+curl -f http://localhost:3050/health
 ```
 
 ## 最佳实践

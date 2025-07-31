@@ -9,7 +9,7 @@ describe('Navbar Configuration', () => {
       expect(navbarConfig.logo.url).toBe('/');
       expect(navbarConfig.logo.src).toBe('/icons/apple-touch-icon.png');
       expect(navbarConfig.logo.alt).toBe('logo');
-      expect(navbarConfig.logo.title).toBe('Better SaaS');
+      expect(navbarConfig.logo.title).toBe('WangshuXC');
     });
 
     it('should have valid auth configuration', () => {

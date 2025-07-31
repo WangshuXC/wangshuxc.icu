@@ -69,7 +69,7 @@ export default async function Layout({ children, params }: Props) {
       <DocsLayout
         tree={tree}
         nav={{
-          title: 'Better SaaS Docs',
+          title: 'WangshuXC Docs',
           url: navUrl,
         }}
       >

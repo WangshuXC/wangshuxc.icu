@@ -332,7 +332,7 @@ stripe login
 Forward events to your local server:
 
 ```bash
-stripe listen --forward-to localhost:3000/api/webhooks/stripe
+stripe listen --forward-to localhost:3050/api/webhooks/stripe
 ```
 
 The webhook secret is printed in the terminal. Copy it and add it to your `.env` file:
@@ -935,7 +935,7 @@ export const STRIPE_TEST_CARDS = {
 stripe login
 
 # Forward webhooks to local development
-stripe listen --forward-to localhost:3000/api/webhooks/stripe
+stripe listen --forward-to localhost:3050/api/webhooks/stripe
 
 # Trigger test events
 stripe trigger customer.subscription.created

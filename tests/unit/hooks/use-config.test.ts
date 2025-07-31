@@ -8,7 +8,7 @@ jest.mock('next-intl', () => ({
 
 // Mock config modules
 const mockAppConfig = {
-  name: 'Better SaaS',
+  name: 'WangshuXC',
   description: 'A modern SaaS application',
   version: '1.0.0',
   pagination: {
@@ -345,7 +345,7 @@ describe('Config Hooks Tests', () => {
 
       // Should return the mock config, not undefined
       expect(result.current).toBeDefined();
-      expect(result.current.name).toBe('Better SaaS');
+      expect(result.current.name).toBe('WangshuXC');
     });
   });
 }); 

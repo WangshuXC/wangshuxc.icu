@@ -10,6 +10,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { featuresConfig } from '@/config';
 import { useAuthLoading, useIsAuthenticated, useUser, useSignOut } from '@/store/auth-store';
 import { Home, LogOut, Settings, Shield, User } from 'lucide-react';
 import { useTranslations } from 'next-intl';
@@ -37,10 +38,10 @@ export function UserAvatarMenu() {
 
   const userInitials = user.name
     ? user.name
-        .split(' ')
-        .map((n) => n[0])
-        .join('')
-        .toUpperCase()
+      .split(' ')
+      .map((n) => n[0])
+      .join('')
+      .toUpperCase()
     : (user.email?.[0]?.toUpperCase() ?? 'U');
 
   return (
@@ -65,10 +66,13 @@ export function UserAvatarMenu() {
           <User className="mr-2 h-4 w-4" />
           {t('profile')}
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => router.push('/settings/billing')}>
-          <Settings className="mr-2 h-4 w-4" />
-          {t('billing')}
-        </DropdownMenuItem>
+        {
+          featuresConfig.payment.enabled &&
+          (<DropdownMenuItem onClick={() => router.push('/settings/billing')}>
+            <Settings className="mr-2 h-4 w-4" />
+            {t('billing')}
+          </DropdownMenuItem>)
+        }
         <DropdownMenuItem onClick={() => router.push('/settings/security')}>
           <Shield className="mr-2 h-4 w-4" />
           {t('security')}

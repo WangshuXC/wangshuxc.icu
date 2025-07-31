@@ -19,7 +19,7 @@ export const featuresConfig: FeaturesConfig = {
 
   // Payment features
   payment: {
-    enabled: true,
+    enabled: false,
     provider: 'stripe',
     currency: 'usd',
     trial: {

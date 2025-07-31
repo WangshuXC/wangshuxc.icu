@@ -436,7 +436,7 @@ Create health check script:
 # /opt/better-saas/scripts/health-check.sh
 
 # Check application
-if ! curl -f http://localhost:3000/health > /dev/null 2>&1; then
+if ! curl -f http://localhost:3050/health > /dev/null 2>&1; then
     echo "Application health check failed"
     exit 1
 fi

@@ -73,7 +73,7 @@ vim .env  # 终端编辑器
 
 ```bash
 # 应用配置
-NEXT_PUBLIC_APP_URL="http://localhost:3000"
+NEXT_PUBLIC_APP_URL="http://localhost:3050"
 
 # 数据库（必需）
 DATABASE_URL="postgresql://username:password@localhost:5432/better_saas"
@@ -107,7 +107,7 @@ pnpm db:push
 pnpm dev
 
 # 应用程序将在以下地址可用：
-# http://localhost:3000
+# http://localhost:3050
 ```
 
 🎉 **恭喜！** 您的 Better SaaS 应用程序现在正在运行！
@@ -154,7 +154,7 @@ R2_PUBLIC_URL="https://your-domain.com"
 1. **创建 GitHub OAuth 应用：**
    - 转到 GitHub 设置 → 开发者设置 → OAuth 应用
    - 创建新的 OAuth 应用
-   - 设置授权回调 URL 为：`http://localhost:3000/api/auth/callback/github`
+   - 设置授权回调 URL 为：`http://localhost:3050/api/auth/callback/github`
 
 2. **添加到您的 `.env` 文件：**
 
@@ -171,7 +171,7 @@ GITHUB_CLIENT_SECRET="your-github-client-secret"
    - 创建新项目或选择现有项目
    - 启用 Google+ API
    - 创建 OAuth 2.0 凭据
-   - 设置重定向 URI 为：`http://localhost:3000/api/auth/callback/google`
+   - 设置重定向 URI 为：`http://localhost:3050/api/auth/callback/google`
 
 2. **添加到您的 `.env` 文件：**
 
@@ -212,7 +212,7 @@ WHERE email = 'admin@example.com';
 
 ### 1. 身份认证系统
 
-访问 `http://localhost:3000/login` 进行测试：
+访问 `http://localhost:3050/login` 进行测试：
 - ✅ **邮箱/密码登录** - 创建账户并登录
 - ✅ **社交登录** - 尝试 GitHub 或 Google 身份认证
 - ✅ **密码重置** - 测试密码重置流程
@@ -220,7 +220,7 @@ WHERE email = 'admin@example.com';
 
 ### 2. 仪表板功能
 
-在 `http://localhost:3000/dashboard` 访问仪表板：
+在 `http://localhost:3050/dashboard` 访问仪表板：
 - ✅ **用户仪表板** - 个人用户界面
 - ✅ **管理员仪表板** - 管理控制（管理员用户）
 - ✅ **文件管理** - 上传和管理文件
@@ -228,7 +228,7 @@ WHERE email = 'admin@example.com';
 
 ### 3. 支付系统
 
-在 `http://localhost:3000/pricing` 测试支付流程：
+在 `http://localhost:3050/pricing` 测试支付流程：
 - ✅ **订阅计划** - 查看可用的定价计划
 - ✅ **支付处理** - 使用 Stripe 测试卡进行测试
 - ✅ **账单管理** - 管理订阅和发票
@@ -236,7 +236,7 @@ WHERE email = 'admin@example.com';
 
 ### 4. 文件管理
 
-在 `http://localhost:3000/dashboard/files` 尝试文件操作：
+在 `http://localhost:3050/dashboard/files` 尝试文件操作：
 - ✅ **文件上传** - 拖放文件上传
 - ✅ **图像处理** - 自动缩略图生成
 - ✅ **文件组织** - 组织和管理文件
@@ -328,7 +328,7 @@ pnpm preview
 验证您的设置是否正常工作：
 
 ### ✅ 基本功能
-- [ ] 应用程序在 `http://localhost:3000` 加载
+- [ ] 应用程序在 `http://localhost:3050` 加载
 - [ ] 浏览器开发者工具中没有控制台错误
 - [ ] 数据库连接正常工作
 - [ ] 环境变量正确加载

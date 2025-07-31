@@ -349,7 +349,7 @@ export const useAuthStore = create<AuthState>()(
         },
       }),
       {
-        name: 'better-saas-auth',
+        name: 'wangshuxc-auth',
         storage: createJSONStorage(() => localStorage),
         // Only persist safe state fields
         partialize: (state) => ({

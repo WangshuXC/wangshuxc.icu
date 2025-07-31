@@ -74,7 +74,7 @@ nano .env  # Terminal editor
 
 ```bash
 # App Configuration
-NEXT_PUBLIC_APP_URL="http://localhost:3000"
+NEXT_PUBLIC_APP_URL="http://localhost:3050"
 
 # Database (Required)
 DATABASE_URL="postgresql://username:password@localhost:5432/better_saas"
@@ -108,7 +108,7 @@ pnpm db:push
 pnpm dev
 
 # The application will be available at:
-# http://localhost:3000
+# http://localhost:3050
 ```
 
 🎉 **Congratulations!** Your Better SaaS application is now running!
@@ -156,7 +156,7 @@ R2_PUBLIC_URL="https://your-domain.com"
 1. **Create a GitHub OAuth App:**
    - Go to GitHub Settings → Developer settings → OAuth Apps
    - Create a new OAuth App
-   - Set Authorization callback URL to: `http://localhost:3000/api/auth/callback/github`
+   - Set Authorization callback URL to: `http://localhost:3050/api/auth/callback/github`
 
 2. **Add to your `.env` file:**
 
@@ -173,7 +173,7 @@ GITHUB_CLIENT_SECRET="your-github-client-secret"
    - Create a new project or select existing
    - Enable Google+ API
    - Create OAuth 2.0 credentials
-   - Set redirect URI to: `http://localhost:3000/api/auth/callback/google`
+   - Set redirect URI to: `http://localhost:3050/api/auth/callback/google`
 
 2. **Add to your `.env` file:**
 
@@ -214,7 +214,7 @@ Log out and log back in, click on the avatar dropdown to enter the backend, and 
 
 ### 1. Authentication System
 
-Visit `http://localhost:3000/login` to test:
+Visit `http://localhost:3050/login` to test:
 - ✅ **Email/Password Login** - Create an account and sign in
 - ✅ **Social Login** - Try GitHub or Google authentication
 - ✅ **Password Reset** - Test the password reset flow
@@ -222,7 +222,7 @@ Visit `http://localhost:3000/login` to test:
 
 ### 2. Dashboard Features
 
-Access the dashboard at `http://localhost:3000/dashboard`:
+Access the dashboard at `http://localhost:3050/dashboard`:
 - ✅ **User Dashboard** - Personal user interface
 - ✅ **Admin Dashboard** - Administrative controls (for admin users)
 - ✅ **File Management** - Upload and manage files
@@ -230,7 +230,7 @@ Access the dashboard at `http://localhost:3000/dashboard`:
 
 ### 3. Payment System
 
-Test the payment flow at `http://localhost:3000/pricing`:
+Test the payment flow at `http://localhost:3050/pricing`:
 - ✅ **Subscription Plans** - View available pricing plans
 - ✅ **Payment Processing** - Test with Stripe test cards
 - ✅ **Billing Management** - Manage subscriptions and invoices
@@ -238,7 +238,7 @@ Test the payment flow at `http://localhost:3000/pricing`:
 
 ### 4. File Management
 
-Try file operations at `http://localhost:3000/dashboard/files`:
+Try file operations at `http://localhost:3050/dashboard/files`:
 - ✅ **File Upload** - Drag and drop file uploads
 - ✅ **Image Processing** - Automatic thumbnail generation
 - ✅ **File Organization** - Organize and manage files
@@ -330,7 +330,7 @@ pnpm preview
 Verify your setup is working correctly:
 
 ### ✅ Basic Functionality
-- [ ] Application loads at `http://localhost:3000`
+- [ ] Application loads at `http://localhost:3050`
 - [ ] No console errors in browser developer tools
 - [ ] Database connection is working
 - [ ] Environment variables are loaded correctly

@@ -159,7 +159,7 @@ export interface MockLocation {
 
 export function createMockLocation(overrides: Partial<MockLocation> = {}): MockLocation {
   const pathname = overrides.pathname || '/';
-  const origin = overrides.origin || 'http://localhost:3000';
+  const origin = overrides.origin || 'http://localhost:3050';
   
   return {
     pathname,

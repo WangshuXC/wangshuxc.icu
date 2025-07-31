@@ -586,7 +586,7 @@ sudo systemctl start better-saas
 
 # Health check
 sleep 30
-if curl -f http://localhost:3000/health > /dev/null 2>&1; then
+if curl -f http://localhost:3050/health > /dev/null 2>&1; then
     echo "Rollback successful! Application is healthy."
 else
     echo "Rollback failed! Application is not responding."
@@ -812,7 +812,7 @@ ssh user@server 'sudo journalctl -u better-saas -f'
 
 # Test deployment locally
 docker-compose up -d
-curl -f http://localhost:3000/health
+curl -f http://localhost:3050/health
 ```
 
 ## Best Practices

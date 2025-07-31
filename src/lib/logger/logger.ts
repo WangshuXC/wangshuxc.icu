@@ -1,3 +1,6 @@
+// 导入必要的依赖
+import * as pino from 'pino';
+
 // Detect runtime environment
 const isCloudflareWorkers = typeof navigator !== 'undefined' && navigator.userAgent?.includes('Cloudflare-Workers');
 const isVercelEdge = typeof (globalThis as Record<string, unknown>).EdgeRuntime !== 'undefined';
@@ -65,9 +68,7 @@ if (isEdgeRuntime) {
   logger = createEdgeLogger();
 } else {
   // Use pino in Node.js environment
-  const pino = require('pino');
-  
-  logger = pino({
+  logger = pino.default({
     level: process.env.NODE_ENV === 'production' ? 'info' : 'debug',
     ...(process.env.NODE_ENV === 'production' && {
       formatters: {

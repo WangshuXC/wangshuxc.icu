@@ -125,8 +125,8 @@ export const TEST_CONFIG = {
     mobile: { width: 375, height: 667 },
   },
   urls: {
-    baseUrl: 'http://localhost:3000',
-    api: 'http://localhost:3000/api',
+    baseUrl: 'http://localhost:3050',
+    api: 'http://localhost:3050/api',
   },
 };
 

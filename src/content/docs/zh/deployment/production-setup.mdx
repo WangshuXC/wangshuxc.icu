@@ -436,7 +436,7 @@ EOF
 # /opt/better-saas/scripts/health-check.sh
 
 # 检查应用程序
-if ! curl -f http://localhost:3000/health > /dev/null 2>&1; then
+if ! curl -f http://localhost:3050/health > /dev/null 2>&1; then
     echo "应用程序健康检查失败"
     exit 1
 fi

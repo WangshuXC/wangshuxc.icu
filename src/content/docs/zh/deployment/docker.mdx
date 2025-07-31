@@ -34,7 +34,7 @@ DATABASE_URL=postgresql://postgres:password@db:5432/bettersaas
 
 # 认证
 BETTER_AUTH_SECRET=your-super-secret-key-here
-BETTER_AUTH_URL=http://localhost:3000
+BETTER_AUTH_URL=http://localhost:3050
 
 # GitHub OAuth
 GITHUB_CLIENT_ID=your-github-client-id
@@ -364,7 +364,7 @@ echo "数据库迁移完成！"
 ```dockerfile
 # 添加到 Dockerfile
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD curl -f http://localhost:3000/api/health || exit 1
+  CMD curl -f http://localhost:3050/api/health || exit 1
 ```
 
 ### Docker Compose 健康检查
@@ -374,7 +374,7 @@ services:
   app:
     # ... 其他配置
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
+      test: ["CMD", "curl", "-f", "http://localhost:3050/api/health"]
       interval: 30s
       timeout: 10s
       retries: 3
