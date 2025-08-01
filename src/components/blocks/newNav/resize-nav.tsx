@@ -105,13 +105,12 @@ export function NewNavbar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const navbarData = useNavbar();
     const { logo, menu, auth, isAuthenticated, isLoading, isInitialized } = navbarData;
-    console.log(menu)
 
     return (
         <Navbar>
             {/* Desktop Navigation */}
             <NavBody>
-                <NavbarLogo {...logo} />
+                <NavbarLogo url={logo.url} src={logo.src} alt={logo.alt} title={logo.title} />
                 <NavItems items={menu} />
                 <div className="flex items-center gap-2">
                     <NavbarButton variant="secondary" className="p-0">
@@ -136,7 +135,7 @@ export function NewNavbar() {
             {/* Mobile Navigation */}
             <MobileNav>
                 <MobileNavHeader>
-                    <NavbarLogo {...logo} />
+                    <NavbarLogo url={logo.url} src={logo.src} alt={logo.alt} title={logo.title} />
                     <MobileNavToggle
                         isOpen={isMobileMenuOpen}
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}

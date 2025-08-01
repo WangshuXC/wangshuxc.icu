@@ -123,12 +123,10 @@
     "image": "图片"
   },
   "hero": {
-    "heading": "终极可扩展的 Next.js SaaS 模板",
-    "description": "使用我们生产就绪的 Next.js 模板开始您的 SaaS 之旅。大幅缩短开发时间，更快地为客户提供价值。以无与伦比的速度和信心构建、启动和扩展。",
-    "buttonText": "开始使用",
-    "buttonUrl": "/docs",
-    "reviewsText": "来自 {count}+ 条评价",
-    "avatarAlt": "头像 {index}"
+    "heading": "Ciallo!",
+    "description": "欢迎来到我的个人主页",
+    "buttonText": "开始",
+    "buttonUrl": "/blog"
   },
   "pricing": {
     "heading": "选择您的套餐",

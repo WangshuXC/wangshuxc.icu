@@ -15,14 +15,8 @@ interface ServerComponentPreviewProps {
 export function ServerComponentPreview({ componentId, name, code }: ServerComponentPreviewProps) {
   const renderComponent = () => {
     switch (componentId) {
-      case 'modern-hero':
-        return <Hero />;
       case 'tech-stack':
         return <TechStack />;
-      case 'features':
-        return <Features />;
-      case 'pricing2':
-        return <Pricing />;
       case 'faq3':
         return <Faq />;
       case 'footer-7':

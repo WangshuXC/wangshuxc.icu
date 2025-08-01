@@ -192,7 +192,7 @@ const TechStack = ({
   ];
 
   return (
-    <section className="bg-gradient-to-b from-background to-muted/20 py-24">
+    <section className="py-24">
       <div className="container mx-auto px-4">
         <div className="text-center">
           <p className="mb-4">{t('heading')}</p>

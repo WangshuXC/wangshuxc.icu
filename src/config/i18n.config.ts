@@ -2,36 +2,36 @@ import type { I18nConfig } from "@/types";
 
 export const i18nConfig: I18nConfig = {
   // Supported languages
-  locales: ['zh', 'en' ] as const,
-  
+  locales: ["en", "zh"] as const,
+
   // Default language
-  defaultLocale: 'zh',
-  
+  defaultLocale: "zh",
+
   // Fallback language
-  fallbackLocale: 'zh',
-  
+  fallbackLocale: "zh",
+
   // Language configurations
   languages: {
     en: {
-      name: 'English',
-      nativeName: 'English',
-      flag: '🇺🇸',
-      dir: 'ltr',
+      name: "English",
+      nativeName: "English",
+      flag: "🇺🇸",
+      dir: "ltr",
       enabled: true,
     },
     zh: {
-      name: 'Chinese',
-      nativeName: '中文',
-      flag: '🇨🇳',
-      dir: 'ltr',
+      name: "Chinese",
+      nativeName: "中文",
+      flag: "🇨🇳",
+      dir: "ltr",
       enabled: true,
     },
   },
 
   // Routing configuration
   routing: {
-    localePrefix: 'as-needed',
-    localeDetection: false,
+    localePrefix: "as-needed",
+    localeDetection: true,
     // Optional: domain-based routing
     // domains: {
     //   en: 'example.com',
@@ -41,69 +41,69 @@ export const i18nConfig: I18nConfig = {
 
   // Translation namespaces
   namespaces: [
-    'common',
-    'auth',
-    'dashboard',
-    'toast',
-    'sidebar',
-    'navbar',
-    'userMenu',
-    'settings',
-    'profile',
-    'security',
-    'faq',
-    'blog',
-    'blocks',
-    'legal',
-    'fileManager'
+    "common",
+    "auth",
+    "dashboard",
+    "toast",
+    "sidebar",
+    "navbar",
+    "userMenu",
+    "settings",
+    "profile",
+    "security",
+    "faq",
+    "blog",
+    "blocks",
+    "legal",
+    "fileManager",
   ],
 
   // Date and time formats for each locale
   dateTimeFormats: {
     en: {
       short: {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric',
+        year: "numeric",
+        month: "short",
+        day: "numeric",
       },
       medium: {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric',
-        hour: 'numeric',
-        minute: 'numeric',
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
       },
       long: {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        hour: 'numeric',
-        minute: 'numeric',
-        second: 'numeric',
-        timeZoneName: 'short',
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+        second: "numeric",
+        timeZoneName: "short",
       },
     },
     zh: {
       short: {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric',
+        year: "numeric",
+        month: "short",
+        day: "numeric",
       },
       medium: {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric',
-        hour: 'numeric',
-        minute: 'numeric',
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
       },
       long: {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        hour: 'numeric',
-        minute: 'numeric',
-        second: 'numeric',
-        timeZoneName: 'short',
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+        second: "numeric",
+        timeZoneName: "short",
       },
     },
   },
@@ -112,37 +112,37 @@ export const i18nConfig: I18nConfig = {
   numberFormats: {
     en: {
       currency: {
-        style: 'currency',
-        currency: 'USD',
+        style: "currency",
+        currency: "USD",
         minimumFractionDigits: 2,
       },
       decimal: {
-        style: 'decimal',
+        style: "decimal",
         minimumFractionDigits: 0,
         maximumFractionDigits: 2,
       },
       percent: {
-        style: 'percent',
+        style: "percent",
         minimumFractionDigits: 0,
         maximumFractionDigits: 1,
       },
     },
     zh: {
       currency: {
-        style: 'currency',
-        currency: 'CNY',
+        style: "currency",
+        currency: "CNY",
         minimumFractionDigits: 2,
       },
       decimal: {
-        style: 'decimal',
+        style: "decimal",
         minimumFractionDigits: 0,
         maximumFractionDigits: 2,
       },
       percent: {
-        style: 'percent',
+        style: "percent",
         minimumFractionDigits: 0,
         maximumFractionDigits: 1,
       },
     },
   },
-}; 
+};

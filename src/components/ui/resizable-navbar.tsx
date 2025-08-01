@@ -51,6 +51,12 @@ interface MobileNavMenuProps {
   onClose: () => void;
 }
 
+// 创建一个Context来共享visible状态
+const NavbarVisibleContext = React.createContext<boolean>(false);
+
+// 提供一个hook来获取visible状态
+export const useNavbarVisible = () => React.useContext(NavbarVisibleContext);
+
 export const Navbar = ({ children, className }: NavbarProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollY } = useScroll({
@@ -68,20 +74,21 @@ export const Navbar = ({ children, className }: NavbarProps) => {
   });
 
   return (
-    <motion.div
-      ref={ref}
-      // IMPORTANT: Change this to class of `fixed` if you want the navbar to be fixed
-      className={cn("sticky inset-x-0 top-10 z-40 w-full", className)}
-    >
-      {React.Children.map(children, (child) =>
-        React.isValidElement(child)
-          ? React.cloneElement(
-            child as React.ReactElement<{ visible?: boolean }>,
-            { visible },
-          )
-          : child,
-      )}
-    </motion.div>
+    <NavbarVisibleContext.Provider value={visible}>
+      <motion.div
+        ref={ref}
+        className={cn("sticky inset-x-0 top-5 z-40 w-full", className)}
+      >
+        {React.Children.map(children, (child) =>
+          React.isValidElement(child)
+            ? React.cloneElement(
+              child as React.ReactElement<{ visible?: boolean }>,
+              { visible },
+            )
+            : child,
+        )}
+      </motion.div>
+    </NavbarVisibleContext.Provider>
   );
 };
 
@@ -93,7 +100,7 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
         boxShadow: visible
           ? "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset"
           : "none",
-        width: visible ? "40%" : "100%",
+        width: visible ? "70%" : "100%",
         y: visible ? 20 : 0,
       }}
       transition={{
@@ -233,18 +240,33 @@ export const MobileNavToggle = ({
 };
 
 export const NavbarLogo = ({ url, src, alt, title }: { url: string, src: string, alt: string, title: string }) => {
+  // 使用Context获取visible状态
+  const visible = useNavbarVisible();
+
   return (
     <a
       href={url}
       className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black"
     >
-      <Image
-        src={src}
-        alt={alt}
-        width={30}
-        height={30}
-        className="rounded"
-      />
+      <motion.div
+        animate={{
+          borderRadius: visible ? "4px" : "0px",
+        }}
+        transition={{
+          type: "spring",
+          stiffness: 200,
+          damping: 30,
+        }}
+        className="overflow-hidden"
+      >
+        <Image
+          src={src}
+          alt={alt}
+          width={30}
+          height={30}
+          className="h-[30px] w-[30px] object-cover"
+        />
+      </motion.div>
       <span className="font-semibold text-lg text-black dark:text-white">{title}</span>
     </a>
   );
