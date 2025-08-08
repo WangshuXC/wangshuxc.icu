@@ -349,3 +349,13 @@ declare module 'better-auth/types' {
   }
 }
 
+// FriendLink config
+export interface FriendLinkConfig {
+  title: string;
+  description: string;
+  items: {  
+    name: string;
+    description: string;
+    url: string;
+  }[];
+}

@@ -30,8 +30,8 @@ export const navbarConfig: NavbarConfig = {
         url: "/blog", // Will be prefixed with locale in hook
       },
       {
-        title: "menu.document", // i18n key
-        url: "/docs",
+        title: "menu.friendLink", // i18n key
+        url: "/friendLink",
       },
       {
         title: "menu.components", // i18n key

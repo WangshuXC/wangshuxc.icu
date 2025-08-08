@@ -53,7 +53,7 @@ export default async function Layout({ children, params }: Props) {
     children: convertTreeItems(treeItems)
   };
 
-  const navUrl = getLocalizedUrl('/docs');
+  const navUrl = getLocalizedUrl('/');
 
   return (
     <RootProvider
@@ -69,7 +69,7 @@ export default async function Layout({ children, params }: Props) {
       <DocsLayout
         tree={tree}
         nav={{
-          title: 'WangshuXC Docs',
+          title: 'WangshuXC',
           url: navUrl,
         }}
       >
