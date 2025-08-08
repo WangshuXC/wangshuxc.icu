@@ -15,6 +15,7 @@ import { ThemeToggle } from '@/components/widget/theme-toggle';
 import { UserAvatarMenu } from '@/components/widget/user-avatar-menu';
 import { useState } from "react";
 import { useNavbar } from '@/hooks/use-navbar';
+import Link from "next/link";
 
 function DesktopAuthDisplay({
     loginText,
@@ -147,14 +148,13 @@ export function NewNavbar() {
                     onClose={() => setIsMobileMenuOpen(false)}
                 >
                     {menu.map((item, idx) => (
-                        <a
+                        <Link
                             key={`mobile-link-${idx}`}
                             href={item.url}
-                            onClick={() => setIsMobileMenuOpen(false)}
                             className="relative text-neutral-600 dark:text-neutral-300"
                         >
                             <span className="block">{item.title}</span>
-                        </a>
+                        </Link>
                     ))}
                     <div className="flex w-full gap-4">
                         <LanguageSwitcher />
