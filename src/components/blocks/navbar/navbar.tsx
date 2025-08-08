@@ -45,10 +45,10 @@ function DesktopAuthDisplay({
 
     return (
         <div className="flex items-center gap-2">
-            <NavbarButton variant="secondary" className="w-full justify-start" href={loginUrl}>
+            <NavbarButton variant="secondary" className="justify-start" href={loginUrl}>
                 {loginText}
             </NavbarButton>
-            <NavbarButton className="w-full justify-start" href={signupUrl}>
+            <NavbarButton className="justify-start" href={signupUrl}>
                 {signupText}
             </NavbarButton>
         </div>
@@ -106,7 +106,6 @@ export function ResizableNavbar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const navbarData = useNavbar();
     const { logo, menu, auth, isAuthenticated, isLoading, isInitialized } = navbarData;
-
     return (
         <Navbar>
             {/* Desktop Navigation */}

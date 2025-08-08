@@ -12,6 +12,7 @@ import { Globe } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { useEnabledLanguages } from '@/hooks/use-config';
+import { useNavbarVisible } from '@/components/blocks/navbar/resizable-navbar';
 
 interface EnabledLanguage {
   locale: string;
@@ -28,6 +29,8 @@ export function LanguageSwitcher() {
   const router = useRouter();
   const pathname = usePathname();
   const locales = useEnabledLanguages();
+
+  const visible = useNavbarVisible();
 
   const handleLanguageChange = (newLocale: string) => {
     if (newLocale === locale) return;
@@ -54,7 +57,15 @@ export function LanguageSwitcher() {
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="sm" className="gap-2">
           <Globe className="h-4 w-4" />
-          {currentLanguage?.nativeName || 'English'}
+          <span 
+            className={`transition-all duration-300 ease-in-out overflow-hidden ${
+              !visible 
+                ? 'opacity-100 max-w-[100px] ml-2' 
+                : 'opacity-0 max-w-0 -ml-2'
+            }`}
+          >
+            {currentLanguage?.nativeName || 'English'}
+          </span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
