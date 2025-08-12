@@ -2,19 +2,26 @@
 
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
-export const ThreeDMarquee = ({
-  images,
-  className,
-}: {
+import { memo, useMemo } from "react";
+
+interface ThreeDMarqueeProps {
   images: string[];
   className?: string;
-}) => {
-  // Split the images array into 4 equal parts
-  const chunkSize = Math.ceil(images.length / 4);
-  const chunks = Array.from({ length: 4 }, (_, colIndex) => {
-    const start = colIndex * chunkSize;
-    return images.slice(start, start + chunkSize);
-  });
+}
+
+export const ThreeDMarquee = memo(({
+  images,
+  className,
+}: ThreeDMarqueeProps) => {
+  // 使用 useMemo 缓存分组计算
+  const chunks = useMemo(() => {
+    const chunkSize = Math.ceil(images.length / 3);
+    return Array.from({ length: 3 }, (_, colIndex) => {
+      const start = colIndex * chunkSize;
+      return images.slice(start, start + chunkSize);
+    });
+  }, [images]);
+
   return (
     <div
       className={cn(
@@ -28,15 +35,16 @@ export const ThreeDMarquee = ({
             style={{
               transform: "rotateX(55deg) rotateY(0deg) rotateZ(-45deg)",
             }}
-            className="relative top-96 right-[70%] grid size-full origin-top-left grid-cols-4 gap-8 transform-3d"
+            className="relative top-96 right-[70%] grid size-full origin-top-left grid-cols-3 gap-8 transform-3d"
           >
             {chunks.map((subarray, colIndex) => (
               <motion.div
                 animate={{ y: colIndex % 2 === 0 ? 100 : -100 }}
                 transition={{
-                  duration: colIndex % 2 === 0 ? 10 : 15,
+                  duration: colIndex % 2 === 0 ? 12 : 18, // 减慢动画速度，降低CPU使用
                   repeat: Infinity,
                   repeatType: "reverse",
+                  ease: "linear", // 使用线性缓动，减少计算量
                 }}
                 key={colIndex + "marquee"}
                 className="flex flex-col items-start gap-8"
@@ -50,8 +58,8 @@ export const ThreeDMarquee = ({
                         y: -10,
                       }}
                       transition={{
-                        duration: 0.3,
-                        ease: "easeInOut",
+                        duration: 0.2, // 减少hover动画时间
+                        ease: "easeOut",
                       }}
                       key={imageIndex + image}
                       src={image}
@@ -59,6 +67,11 @@ export const ThreeDMarquee = ({
                       className="aspect-[970/700] rounded-lg object-cover ring ring-gray-950/5 hover:shadow-2xl"
                       width={970}
                       height={700}
+                      loading="lazy" // 添加懒加载
+                      decoding="async" // 异步解码
+                      style={{
+                        willChange: "transform", // 提示浏览器优化
+                      }}
                     />
                   </div>
                 ))}
@@ -69,9 +82,12 @@ export const ThreeDMarquee = ({
       </div>
     </div>
   );
-};
+});
 
-const GridLineHorizontal = ({
+ThreeDMarquee.displayName = "ThreeDMarquee";
+
+// 使用 memo 优化网格线组件
+const GridLineHorizontal = memo(({
   className,
   offset,
 }: {
@@ -87,7 +103,7 @@ const GridLineHorizontal = ({
           "--height": "1px",
           "--width": "5px",
           "--fade-stop": "90%",
-          "--offset": offset || "200px", //-100px if you want to keep the line inside
+          "--offset": offset || "200px",
           "--color-dark": "rgba(255, 255, 255, 0.2)",
           maskComposite: "exclude",
         } as React.CSSProperties
@@ -104,9 +120,11 @@ const GridLineHorizontal = ({
       )}
     ></div>
   );
-};
+});
 
-const GridLineVertical = ({
+GridLineHorizontal.displayName = "GridLineHorizontal";
+
+const GridLineVertical = memo(({
   className,
   offset,
 }: {
@@ -122,7 +140,7 @@ const GridLineVertical = ({
           "--height": "5px",
           "--width": "1px",
           "--fade-stop": "90%",
-          "--offset": offset || "150px", //-100px if you want to keep the line inside
+          "--offset": offset || "150px",
           "--color-dark": "rgba(255, 255, 255, 0.2)",
           maskComposite: "exclude",
         } as React.CSSProperties
@@ -139,4 +157,6 @@ const GridLineVertical = ({
       )}
     ></div>
   );
-};
+});
+
+GridLineVertical.displayName = "GridLineVertical";
