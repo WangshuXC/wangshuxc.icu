@@ -3,12 +3,9 @@ import { useTranslations } from "next-intl";
 interface TechStackProps {
   heading?: string;
   description?: string;
-  badge?: string;
 }
 
-const TechStack = ({
-  heading = 'Build With Modern Stack',
-}: TechStackProps) => {
+const TechStack = ({ heading, description }: TechStackProps) => {
   const t = useTranslations('techstack');
   const techLogos = [
     {
@@ -192,10 +189,16 @@ const TechStack = ({
   ];
 
   return (
-    <section className="py-24">
+    <section className="py-16">
       <div className="container mx-auto px-4">
-        <div className="text-center">
-          <p className="mb-4">{t('heading')}</p>
+        {/* Section Header */}
+        <div className="mb-12 text-center">
+          <h2 className="mb-4 font-bold text-3xl text-foreground md:text-4xl">
+            {heading || t('heading')}
+          </h2>
+          <p className="text-muted-foreground text-lg">
+            {description || t('description')}
+          </p>
         </div>
 
         <div className="flex flex-wrap items-center justify-center gap-8 transition-opacity duration-500 md:gap-12 lg:gap-16">

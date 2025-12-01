@@ -1,31 +1,40 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
+
 interface WorkspaceSpec {
   name: string;
   color: string;
   logo: string;
-  description: string;
+  descriptionKey: string;
 }
 
-export function WorkspaceSection() {
+interface WorkspaceSectionProps {
+  heading?: string;
+  description?: string;
+}
+
+export function WorkspaceSection({ heading, description }: WorkspaceSectionProps) {
+  const t = useTranslations('workspace');
+
   const workspaceSpecs: WorkspaceSpec[] = [
     {
       name: 'AMD 9800X3D',
       color: 'ED1C24',
       logo: 'amd',
-      description: 'High-performance CPU for development',
+      descriptionKey: 'amd9800x3d',
     },
     {
       name: 'AMD 7900XTX',
       color: 'ED1C24',
       logo: 'amd',
-      description: 'Powerful GPU for rendering and AI',
+      descriptionKey: 'amd7900xtx',
     },
     {
       name: 'MacMini M4',
       color: '000000',
       logo: 'apple',
-      description: 'Efficient Apple Silicon workstation',
+      descriptionKey: 'macminiM4',
     },
   ];
 
@@ -36,10 +45,10 @@ export function WorkspaceSection() {
           {/* Section Header */}
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-bold text-3xl text-foreground md:text-4xl">
-              🖥️ My Workspace
+              {heading || t('heading')}
             </h2>
             <p className="text-muted-foreground text-lg">
-              Powered by cutting-edge hardware
+              {description || t('description')}
             </p>
           </div>
 
@@ -68,7 +77,7 @@ export function WorkspaceSection() {
 
                   {/* Description */}
                   <p className="text-muted-foreground text-sm transition-colors group-hover:text-foreground">
-                    {spec.description}
+                    {t(spec.descriptionKey)}
                   </p>
                 </div>
               </div>

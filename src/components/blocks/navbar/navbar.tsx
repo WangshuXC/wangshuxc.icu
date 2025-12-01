@@ -17,44 +17,6 @@ import { useState } from "react";
 import { useNavbar } from '@/hooks/use-navbar';
 import Link from "next/link";
 
-function DesktopAuthDisplay({
-    loginText,
-    loginUrl,
-    signupText,
-    signupUrl,
-    isAuthenticated,
-    isLoading,
-    isInitialized,
-}: {
-    loginText: string;
-    loginUrl: string;
-    signupText: string;
-    signupUrl: string;
-    isAuthenticated: boolean;
-    isLoading: boolean;
-    isInitialized: boolean;
-}) {
-    // Zustand ensure state remains consistent on both server side and client side.
-    if (!isInitialized || isLoading) {
-        return <div className="h-8 w-8 animate-pulse rounded-full bg-muted" />;
-    }
-
-    if (isAuthenticated) {
-        return <UserAvatarMenu />;
-    }
-
-    return (
-        <div className="flex items-center gap-2">
-            <NavbarButton variant="secondary" className="justify-start" href={loginUrl}>
-                {loginText}
-            </NavbarButton>
-            <NavbarButton className="justify-start" href={signupUrl}>
-                {signupText}
-            </NavbarButton>
-        </div>
-    );
-}
-
 function MobileAuthDisplay({
     loginText,
     loginUrl,
@@ -120,7 +82,7 @@ export function ResizableNavbar() {
                         <LanguageSwitcher />
                     </NavbarButton>
 
-                    <DesktopAuthDisplay
+                    {/* <DesktopAuthDisplay
                         loginText={auth.login.text}
                         loginUrl={auth.login.url}
                         signupText={auth.signup.text}
@@ -128,7 +90,7 @@ export function ResizableNavbar() {
                         isAuthenticated={isAuthenticated}
                         isLoading={isLoading}
                         isInitialized={isInitialized}
-                    />
+                    /> */}
                 </div>
             </NavBody>
 

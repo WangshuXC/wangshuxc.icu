@@ -1,46 +1,41 @@
 'use client';
 
-interface Skill {
+import { useTranslations } from 'next-intl';
+import Image from 'next/image';
+
+interface ProgrammingLanguage {
   name: string;
-  color: string;
-  logo: string;
+  imagePath: string;
 }
 
-interface SkillCategory {
-  title: string;
-  icon: string;
-  skills: Skill[];
+interface SkillsSectionProps {
+  heading?: string;
+  description?: string;
 }
 
-export function SkillsSection() {
-  const skillCategories: SkillCategory[] = [
+export function SkillsSection({ heading, description }: SkillsSectionProps) {
+  const t = useTranslations('skills');
+
+  const languages: ProgrammingLanguage[] = [
     {
-      title: '⌨️ Programming',
-      icon: '💻',
-      skills: [
-        { name: 'C++', color: 'blueviolet', logo: 'cplusplus' },
-        { name: 'Python', color: 'blue', logo: 'python' },
-        { name: 'JavaScript', color: 'green', logo: 'javascript' },
-        { name: 'TypeScript', color: '007ACC', logo: 'typescript' },
-        { name: 'Node.js', color: '6DA55F', logo: 'node.js' },
-      ],
+      name: 'C++',
+      imagePath: '/images/C++.png',
     },
     {
-      title: '📋 Markup',
-      icon: '📝',
-      skills: [
-        { name: 'LaTeX', color: '008080', logo: 'latex' },
-        { name: 'Markdown', color: '000000', logo: 'markdown' },
-      ],
+      name: 'Python',
+      imagePath: '/images/Python.png',
     },
     {
-      title: '🔬 Editors',
-      icon: '⚡',
-      skills: [
-        { name: 'Visual Studio Code', color: '0078d7', logo: 'visual-studio-code' },
-        { name: 'Cursor', color: '000000', logo: 'cursor' },
-        { name: 'CodeBuddy', color: '6C4DFF', logo: 'codebuddy' },
-      ],
+      name: 'TypeScript',
+      imagePath: '/images/TypeScript.png',
+    },
+    {
+      name: 'React',
+      imagePath: '/images/React.png',
+    },
+    {
+      name: 'Vue',
+      imagePath: '/images/Vue.png',
     },
   ];
 
@@ -48,37 +43,39 @@ export function SkillsSection() {
     <section className="py-16">
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-6xl">
-          <div className="grid gap-8 md:grid-cols-3">
-            {skillCategories.map((category) => (
+          {/* Section Header */}
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 font-bold text-3xl text-foreground md:text-4xl">
+              {heading || t('heading')}
+            </h2>
+            <p className="text-muted-foreground text-lg">
+              {description || t('description')}
+            </p>
+          </div>
+
+          {/* Programming Languages Grid */}
+          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16">
+            {languages.map((lang, index) => (
               <div
-                key={category.title}
-                className="rounded-2xl border border-border/50 bg-background/50 p-6 backdrop-blur-sm transition-all duration-300 hover:border-primary/20 hover:shadow-lg"
+                key={lang.name}
+                className="group flex cursor-pointer flex-col items-center"
+                style={{
+                  animationDelay: `${index * 0.1}s`,
+                }}
               >
-                <h3 className="mb-6 font-bold text-2xl text-foreground">
-                  {category.title}
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill) => (
-                    <a
-                      key={skill.name}
-                      href={`https://img.shields.io/badge/${skill.name.replace(
-                        /\s+/g,
-                        '%20'
-                      )}-${skill.color}?style=for-the-badge&logo=${skill.logo}&logoColor=white`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-block transition-transform hover:scale-105"
-                    >
-                      <img
-                        src={`https://img.shields.io/badge/${encodeURIComponent(
-                          skill.name
-                        ).replace(/%20/g, '%20')}-${skill.color}?style=for-the-badge&logo=${skill.logo}&logoColor=white`}
-                        alt={skill.name}
-                        className="h-7"
-                      />
-                    </a>
-                  ))}
+                <div className="rounded-2xl border border-border/50 bg-background/50 backdrop-blur-sm transition-all duration-300 group-hover:scale-110 group-hover:border-primary/20 group-hover:bg-background/80 group-hover:shadow-lg">
+                  <div className="relative h-20 w-20 md:h-24 md:w-24">
+                    <Image
+                      src={lang.imagePath}
+                      alt={lang.name}
+                      fill
+                      className="object-contain transition-opacity duration-300 group-hover:opacity-80"
+                    />
+                  </div>
                 </div>
+                <span className="mt-3 font-medium text-foreground text-sm transition-colors duration-300 group-hover:text-muted-foreground">
+                  {lang.name}
+                </span>
               </div>
             ))}
           </div>

@@ -124,9 +124,32 @@
     "buttonText": "Get Started",
     "buttonUrl": "/blog"
   },
+  "heroSection": {
+    "greeting": "Hello, I'm",
+    "name": "WangshuXC",
+    "role": "Frontend Developer at",
+    "company": "Tencent",
+    "location": "Beijing"
+  },
   "techstack": {
     "heading": "Build With Modern Stack",
-    "description": "Build your SaaS application with the latest technology stack"
+    "description": "Build my SaaS application with the latest technology stack"
+  },
+  "skills": {
+    "heading": "Programming Skills",
+    "description": "Programming languages and technologies I have learned and used in my work"
+  },
+  "workspace": {
+    "heading": "🖥️ My Workspace",
+    "description": "Powered by cutting-edge hardware",
+    "amd9800x3d": "High-performance CPU for development",
+    "amd7900xtx": "Powerful GPU for rendering and AI",
+    "macminiM4": "Efficient Apple Silicon workstation"
+  },
+  "social": {
+    "heading": "Let's Connect 🤝",
+    "description": "Feel free to reach out for collaborations or just a friendly chat",
+    "footer": "Currently based in Beijing 🇨🇳 | Open to interesting opportunities"
   },
   "faq": {
     "heading": "Frequently asked questions",
