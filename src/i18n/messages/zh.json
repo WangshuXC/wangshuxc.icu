@@ -75,10 +75,6 @@
   "dashboard": {
     "title": "仪表板",
     "welcome": "欢迎回来！这是您账户的最新动态。",
-    "totalRevenue": "总收入",
-    "subscriptions": "订阅数",
-    "sales": "销售额",
-    "activeNow": "当前活跃",
     "downloadReport": "下载报告",
     "addUser": "添加用户",
     "notificationSettings": "通知设置",
@@ -128,25 +124,6 @@
     "buttonText": "开始",
     "buttonUrl": "/blog"
   },
-  "pricing": {
-    "heading": "选择您的套餐",
-    "description": "选择最适合您需求的套餐。随时升级或降级。",
-    "monthly": "月付",
-    "yearly": "年付",
-    "processingText": "处理中...",
-    "getStartedText": "开始使用",
-    "purchaseText": "购买",
-    "purchaseDialog": {
-      "title": "测试支付提醒",
-      "description": "wangshuxc是开源免费的软件，请使用测试卡号5555555555554444进行支付，切勿真实付款。",
-      "testCardNumber": "测试卡号：5555555555554444",
-      "warning": "⚠️ 此为测试用途，请勿真实付款",
-      "continueButton": "继续支付",
-      "cancelButton": "取消",
-      "purchaseInfo": "您即将购买：{planName}",
-      "processing": "处理中..."
-    }
-  },
   "techstack": {
     "heading": "采用现代化技术栈构建",
     "description": "使用最新的技术栈构建您的SaaS应用程序"
@@ -194,7 +171,6 @@
     "files": "文件管理",
     "settings": "设置",
     "profile": "个人资料",
-    "billing": "账单",
     "security": "安全"
   },
   "navbar": {
@@ -207,7 +183,6 @@
       "document": "文档",
       "friendLink": "友链",
       "components": "组件",
-      "pricing": "定价",
       "resources": "资源",
       "helpCenter": "帮助中心",
       "helpCenterDescription": "获取帮助和支持",
@@ -227,7 +202,6 @@
     "user": "用户",
     "security": "安全",
     "profile": "个人资料",
-    "billing": "账单",
     "settings": "设置",
     "logout": "退出登录"
   },
@@ -245,10 +219,6 @@
     "notifications": {
       "title": "通知",
       "description": "管理您的通知偏好"
-    },
-    "billing": {
-      "title": "账单",
-      "description": "管理您的订阅和付款"
     }
   },
   "profile": {

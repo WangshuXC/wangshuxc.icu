@@ -1,5 +1,3 @@
-import type { PaymentInterval } from '@/payment/types';
-
 export interface AppConfig {
   app: {
     name: string;
@@ -89,15 +87,7 @@ export interface FeaturesConfig {
     passwordReset: boolean;
     emailVerification: boolean;
   };
-  payment: {
-    enabled: boolean;
-    provider: 'stripe';
-    currency: string;
-    trial: {
-      enabled: boolean;
-      days: number;
-    };
-  };
+
   fileManager: {
     enabled: boolean;
     storage: 'r2' | 's3';
@@ -218,64 +208,6 @@ export interface ThemeConfig {
     toast: number;
   };
 }
-
-export interface PaymentPlan {
-  id: string;
-  name: string;
-  description: string;
-  price: number;
-  interval: PaymentInterval;
-  stripePriceId?: string;
-  stripePriceIds?: {
-    monthly?: string;
-    yearly?: string;
-  };
-  // Add yearly price for plans that support both monthly and yearly billing
-  yearlyPrice?: number;
-  features: string[];
-  popular?: boolean;
-  metadata?: Record<string, string>;
-  limits?: {
-    storage?: number; // in GB
-    users?: number;
-    projects?: number;
-    apiCalls?: number;
-  };
-}
-
-export interface PaymentConfig {
-  provider: 'stripe';
-  currency: string;
-  stripe: {
-    secretKey: string;
-    webhookSecret: string;
-    apiVersion: string;
-  };
-  plans: PaymentPlan[];
-  trial: {
-    enabled: boolean;
-    days: number;
-    plans: string[]; // plan IDs that support trial
-  };
-  invoice: {
-    footer: string;
-    logo?: string;
-    supportEmail: string;
-  };
-  billing: {
-    collectTaxId: boolean;
-    allowPromotionCodes: boolean;
-    automaticTax: boolean;
-  };
-  features: {
-    subscriptions: boolean;
-    oneTimePayments: boolean;
-    invoices: boolean;
-    customerPortal: boolean;
-    webhooks: boolean;
-  };
-}
-
 
 export interface SidebarItem {
   title: string;

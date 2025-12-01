@@ -42,7 +42,7 @@ export function useHasPermission() {
     if (isAdmin) return true
     
     // Basic permissions for all users
-    const basicPermissions = ['settings.view', 'profile.edit', 'billing.view']
+    const basicPermissions = ['settings.view', 'profile.edit']
     return basicPermissions.includes(permission)
   }
 }

@@ -1,5 +1,4 @@
 import type { NavbarConfig } from "@/types";
-import { featuresConfig } from "@/config";
 
 export const navbarConfig: NavbarConfig = {
   // Logo configuration
@@ -37,15 +36,6 @@ export const navbarConfig: NavbarConfig = {
         title: "menu.components", // i18n key
         url: "/blocks",
       },
-      ...(featuresConfig.payment.enabled
-        ? [
-            {
-              title: "menu.pricing", // i18n key
-              url: "#pricing",
-              onClick: "handlePricingClick", // Special handler
-            },
-          ]
-        : []),
     ],
   },
 };

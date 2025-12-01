@@ -10,9 +10,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { featuresConfig } from '@/config';
 import { useAuthLoading, useIsAuthenticated, useUser, useSignOut } from '@/store/auth-store';
-import { Home, LogOut, Settings, Shield, User } from 'lucide-react';
+import { LogOut, Shield, User } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 
@@ -67,13 +66,6 @@ export function UserAvatarMenu() {
           <User className="mr-2 h-4 w-4" />
           {t('profile')}
         </DropdownMenuItem>
-        {
-          featuresConfig.payment.enabled &&
-          (<DropdownMenuItem onClick={() => router.push('/settings/billing')}>
-            <Settings className="mr-2 h-4 w-4" />
-            {t('billing')}
-          </DropdownMenuItem>)
-        }
         <DropdownMenuItem onClick={() => router.push('/settings/security')}>
           <Shield className="mr-2 h-4 w-4" />
           {t('security')}

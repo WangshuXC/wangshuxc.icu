@@ -34,11 +34,6 @@ export function Features() {
       icon: <IconCloud />,
     },
     {
-      title: 'Payments',
-      description: 'Manage your billing and subscriptions with Stripe',
-      icon: <IconRouteAltLeft />,
-    },
-    {
       title: 'Internationalization',
       description: 'Reach more customers by making your app multilingual.',
       icon: <IconHelp />,
@@ -52,6 +47,11 @@ export function Features() {
       title: 'SEO Friendly',
       description: 'The WangshuXC is SEO-Ready out of the box, no extra work required',
       icon: <IconHeart />,
+    },
+    {
+      title: 'File Management',
+      description: 'Built-in file upload and management with R2 storage.',
+      icon: <IconRouteAltLeft />,
     },
   ];
   return (

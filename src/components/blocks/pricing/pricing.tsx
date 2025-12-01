@@ -10,14 +10,6 @@ import { Separator } from '@/components/ui/separator';
 import { Switch } from '@/components/ui/switch';
 import { useIsAuthenticated } from '@/store/auth-store';
 import { useRouter } from '@/i18n/navigation';
-import { createCheckoutSession } from '@/server/actions/payment/create-subscription';
-import { toast } from 'sonner';
-import { useTransition } from 'react';
-import { ErrorLogger } from '@/lib/logger/logger-utils';
-import { usePaymentPlans } from '@/hooks/use-config';
-import { PurchaseConfirmationDialog } from '@/components/payment/purchase-confirmation-dialog';
-
-const pricingErrorLogger = new ErrorLogger('pricing');
 
 interface PricingFeature {
   text: string;
@@ -31,7 +23,7 @@ interface PricingPlan {
   yearlyPrice: string;
   yearlyTotal?: number;
   features: PricingFeature[];
-  stripePriceIds?: {
+  priceIds?: {
     monthly?: string;
     yearly?: string;
   };
@@ -58,31 +50,11 @@ const Pricing = ({
   const finalHeading = heading || t('heading');
   const finalDescription = description || t('description');
   const [isYearly, setIsYearly] = useState(false);
-  const [isPending, startTransition] = useTransition();
-  const [showPurchaseDialog, setShowPurchaseDialog] = useState(false);
-  const [selectedPlan, setSelectedPlan] = useState<PricingPlan | null>(null);
   const isAuthenticated = useIsAuthenticated();
   const router = useRouter();
-  const paymentPlans = usePaymentPlans();
   
   // Use configured plans if not provided as props
-  // Convert payment plans to pricing plans format if needed
-  const pricingPlans = plans || paymentPlans.map((plan) => ({
-    ...plan,
-    monthlyPrice: plan.price === 0 ? 'Free' : `$${plan.price}`,
-    yearlyPrice: plan.price === 0 ? 'Free' : `$${Math.round((plan.yearlyPrice || plan.price * 10) / 12)}`,
-    yearlyTotal: plan.price === 0 ? 0 : (plan.yearlyPrice || plan.price * 10),
-    features: plan.features.map((feature: string) => ({ text: feature })),
-    stripePriceIds: plan.stripePriceIds || {
-      monthly: plan.stripePriceId,
-      yearly: plan.stripePriceId,
-    },
-    button: {
-      text: plan.price === 0
-        ? t('getStartedText')
-        : t('purchaseText'),
-    },
-  }));
+  const pricingPlans = plans || [];
 
   const handlePurchaseClick = (plan: PricingPlan) => {
     if (!isAuthenticated) {
@@ -97,56 +69,8 @@ const Pricing = ({
       return;
     }
 
-    // For paid plans, show confirmation dialog first
-    setSelectedPlan(plan);
-    setShowPurchaseDialog(true);
-  };
-
-  const handleConfirmPurchase = () => {
-    if (!selectedPlan) return;
-
-    // Get corresponding price ID
-    const priceId = isYearly 
-      ? selectedPlan.stripePriceIds?.yearly 
-      : selectedPlan.stripePriceIds?.monthly;
-
-    if (!priceId) {
-      toast.error('价格配置错误，请联系客服');
-      setShowPurchaseDialog(false);
-      return;
-    }
-
-    // Create payment session
-    startTransition(async () => {
-      try {
-        const result = await createCheckoutSession({
-          priceId,
-          successUrl: `${window.location.origin}/settings/billing?success=true`,
-          // Redirect to billing page when user cancels payment, showing cancellation notice
-          cancelUrl: `${window.location.origin}/settings/billing?canceled=true`,
-        });
-
-        if (result.success && result.data?.url) {
-          window.location.href = result.data.url;
-        } else {
-          toast.error(result.error || '创建支付会话失败');
-          setShowPurchaseDialog(false);
-        }
-      } catch (error) {
-        toast.error('创建支付会话失败');
-        pricingErrorLogger.logError(error as Error, {
-          operation: 'createCheckoutSession',
-          priceId,
-          planId: selectedPlan.id,
-        });
-        setShowPurchaseDialog(false);
-      }
-    });
-  };
-
-  const handleCancelPurchase = () => {
-    setShowPurchaseDialog(false);
-    setSelectedPlan(null);
+    // For paid plans, redirect to dashboard as payment is not integrated
+    router.push('/dashboard');
   };
 
   return (
@@ -202,9 +126,8 @@ const Pricing = ({
                   <Button 
                     className="w-full" 
                     onClick={() => handlePurchaseClick(plan)}
-                    disabled={isPending}
                   >
-                    {isPending ? t('processingText') : plan.button.text}
+                    {plan.button.text}
                     <ArrowRight className="ml-2 size-4" />
                   </Button>
                 </CardFooter>
@@ -213,15 +136,6 @@ const Pricing = ({
           </div>
         </div>
       </div>
-
-      {/* Purchase Confirmation Dialog */}
-      <PurchaseConfirmationDialog
-        isOpen={showPurchaseDialog}
-        onClose={handleCancelPurchase}
-        onConfirm={handleConfirmPurchase}
-        planName={selectedPlan?.name}
-        isProcessing={isPending}
-      />
     </section>
   );
 };

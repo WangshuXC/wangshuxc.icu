@@ -75,10 +75,6 @@
   "dashboard": {
     "title": "Dashboard",
     "welcome": "Welcome back! Here's what's happening with your account.",
-    "totalRevenue": "Total Revenue",
-    "subscriptions": "Subscriptions",
-    "sales": "Sales",
-    "activeNow": "Active Now",
     "downloadReport": "Download Report",
     "addUser": "Add User",
     "notificationSettings": "Notification Settings",
@@ -128,25 +124,6 @@
     "buttonText": "Get Started",
     "buttonUrl": "/blog"
   },
-  "pricing": {
-    "heading": "Choose Your Plan",
-    "description": "Select the perfect plan for your needs. Upgrade or downgrade at any time.",
-    "monthly": "Monthly",
-    "yearly": "Yearly",
-    "processingText": "Processing...",
-    "getStartedText": "Get Started",
-    "purchaseText": "Purchase",
-    "purchaseDialog": {
-      "title": "Test Payment Notice",
-      "description": "wangshuxc is an open-source and free software. Please use the test card number 5555555555554444 for payment testing. Do not make real payments.",
-      "testCardNumber": "Test Card Number: 5555555555554444",
-      "warning": "⚠️ This is for testing purposes only",
-      "continueButton": "Continue to Payment",
-      "cancelButton": "Cancel",
-      "purchaseInfo": "You are about to purchase: {planName}",
-      "processing": "Processing..."
-    }
-  },
   "techstack": {
     "heading": "Build With Modern Stack",
     "description": "Build your SaaS application with the latest technology stack"
@@ -194,7 +171,6 @@
     "files": "File Manager",
     "settings": "Settings",
     "profile": "Profile",
-    "billing": "Billing",
     "security": "Security"
   },
   "navbar": {
@@ -207,7 +183,6 @@
       "document": "Document",
       "friendLink": "Friend-Link",
       "components": "Components",
-      "pricing": "Pricing",
       "resources": "Resources",
       "helpCenter": "Help Center",
       "helpCenterDescription": "Get help and support",
@@ -227,7 +202,6 @@
     "user": "User",
     "security": "Security",
     "profile": "Profile",
-    "billing": "Billing",
     "settings": "Settings",
     "logout": "Log out"
   },
@@ -245,10 +219,6 @@
     "notifications": {
       "title": "Notifications",
       "description": "Manage your notification preferences"
-    },
-    "billing": {
-      "title": "Billing",
-      "description": "Manage your subscription and payments"
     }
   },
   "profile": {

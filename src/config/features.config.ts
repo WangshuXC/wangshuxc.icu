@@ -17,17 +17,6 @@ export const featuresConfig: FeaturesConfig = {
     emailVerification: true,
   },
 
-  // Payment features
-  payment: {
-    enabled: false,
-    provider: 'stripe',
-    currency: 'usd',
-    trial: {
-      enabled: true,
-      days: 14,
-    },
-  },
-
   // File management features
   fileManager: {
     enabled: true,

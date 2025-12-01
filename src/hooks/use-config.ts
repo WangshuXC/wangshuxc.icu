@@ -1,13 +1,11 @@
 import { useMemo } from 'react';
 import { useLocale } from 'next-intl';
-import { appConfig, featuresConfig, i18nConfig, themeConfig, paymentConfig, navbarConfig } from '@/config';
+import { appConfig, featuresConfig, i18nConfig, themeConfig, navbarConfig } from '@/config';
 import type {
   AppConfig,
   FeaturesConfig,
   I18nConfig,
   ThemeConfig,
-  PaymentConfig,
-  PaymentPlan,
   NavbarConfig,
 } from '@/types';
 
@@ -37,13 +35,6 @@ export function useI18nConfig(): I18nConfig {
  */
 export function useThemeConfig(): ThemeConfig {
   return useMemo(() => themeConfig, []);
-}
-
-/**
- * Hook to access payment configuration
- */
-export function usePaymentConfig(): PaymentConfig {
-  return useMemo(() => paymentConfig, []);
 }
 
 /**
@@ -96,34 +87,6 @@ export function useFeatureFlag(feature: string): boolean {
 
     return Boolean(current);
   }, [feature, config]);
-}
-
-/**
- * Hook to get enabled payment plans
- */
-export function usePaymentPlans() {
-  const config = usePaymentConfig();
-
-  return useMemo(() => {
-    return config.plans.filter((plan: PaymentPlan) => {
-      // Always include free plan
-      if (plan.id === 'free') return true;
-
-      // Check if payment features are enabled
-      return config.features.subscriptions || config.features.oneTimePayments;
-    });
-  }, [config]);
-}
-
-/**
- * Hook to get a specific payment plan
- */
-export function usePaymentPlan(planId: string) {
-  const config = usePaymentConfig();
-
-  return useMemo(() => {
-    return config.plans.find((plan: PaymentPlan) => plan.id === planId);
-  }, [planId, config]);
 }
 
 /**

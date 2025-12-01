@@ -4,14 +4,10 @@ import { ProtectedContainer } from '@/components/dashboard/protected-container';
 import { useIsAdmin } from '@/components/auth/permission-provider';
 import type { SidebarGroup } from '@/types';
 import {
-  Bell,
-  CreditCard,
   Files,
-  Settings,
   Shield,
   Users,
 } from 'lucide-react';
-import { featuresConfig } from '@/config';
 import { useTranslations } from 'next-intl';
 import type { ReactNode } from 'react';
 import { useMemo } from 'react';
@@ -57,14 +53,6 @@ export function ProtectedLayoutClient({ children }: ProtectedLayoutClientProps) 
           href: '/settings/profile',
           icon: Users,
         },
-        // 只有当payment功能启用时才显示billing菜单项
-        ...(featuresConfig.payment.enabled ? [
-          {
-            title: t('billing'),
-            href: '/settings/billing',
-            icon: CreditCard,
-          }
-        ] : []),
         {
           title: t('security'),
           href: '/settings/security',

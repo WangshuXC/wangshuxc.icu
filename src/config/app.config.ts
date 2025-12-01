@@ -17,7 +17,7 @@ export const appConfig: AppConfig = {
       template: '%s | WangshuXC',
     },
     description: 'A modern, full-stack SaaS application built with Next.js 15, featuring authentication, payments, file management, and internationalization.',
-    keywords: ['SaaS', 'Next.js', 'React', 'TypeScript', 'Authentication', 'Payments', 'Stripe'],
+    keywords: ['SaaS', 'Next.js', 'React', 'TypeScript', 'Authentication', 'Payments'],
     authors: [{ name: 'WangshuXC' }],
     creator: 'WangshuXC',
     robots: {
