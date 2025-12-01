@@ -3,6 +3,7 @@ import '@/styles/globals.css';
 import { routing } from '@/i18n/routing';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
+import { Analytics } from "@vercel/analytics/next"
 
 import { appConfig } from '../config/app.config';
 
@@ -81,6 +82,7 @@ export default async function RootLayout({
           }}
         />
         {children}
+        <Analytics />
       </body>
     </html>
   );
