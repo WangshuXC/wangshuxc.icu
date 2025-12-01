@@ -1,8 +1,5 @@
 import { Faq } from '@/components/blocks/faq/faq';
-import { Features } from '@/components/blocks/features/features';
 import { Footer } from '@/components/blocks/footer/footer';
-import { Hero } from '@/components/blocks/hero/hero';
-import { Pricing } from '@/components/blocks/pricing/pricing';
 import { TechStack } from '@/components/blocks/tech-stack';
 import { ComponentPreviewWrapper } from './component-preview-wrapper';
 
