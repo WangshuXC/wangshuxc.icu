@@ -110,15 +110,17 @@ export const Footer = ({
         </div>
         <div className='mt-4 flex flex-col justify-between gap-4 border-t py-8 font-medium text-muted-foreground text-xs md:flex-row md:items-center md:text-left'>
           <p className='order-2 lg:order-1'>{copyright}</p>
-          <DesktopAuthDisplay
-            loginText={auth.login.text}
-            loginUrl={auth.login.url}
-            signupText={auth.signup.text}
-            signupUrl={auth.signup.url}
-            isAuthenticated={isAuthenticated}
-            isLoading={isLoading}
-            isInitialized={isInitialized}
-          />
+          <div className='hidden lg:flex'>
+            <DesktopAuthDisplay
+              loginText={auth.login.text}
+              loginUrl={auth.login.url}
+              signupText={auth.signup.text}
+              signupUrl={auth.signup.url}
+              isAuthenticated={isAuthenticated}
+              isLoading={isLoading}
+              isInitialized={isInitialized}
+            />
+          </div>
           <Link
             href='https://github.com/WangshuXC/wangshuxc.icu'
             target='__blank'
