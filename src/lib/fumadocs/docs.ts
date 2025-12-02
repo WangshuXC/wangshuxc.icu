@@ -43,8 +43,8 @@ function getMetaConfigFromSource(locale: string, folderPath = ''): MetaConfig | 
     const metaPath = folderPath ? `${locale}/${folderPath}/meta.json` : `${locale}/meta.json`;
     
     // Find the meta file in the source data
-    const metaFiles = Array.isArray(sourceData.files) ? sourceData.files : sourceData.files();
-    const metaFile = metaFiles.find(file => 
+    // The files property is an array from fumadocs-mdx
+    const metaFile = sourceData?.files?.find(file => 
       file.path === metaPath && file.type === 'meta'
     );
     
