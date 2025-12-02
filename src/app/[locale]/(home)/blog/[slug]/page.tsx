@@ -130,10 +130,7 @@ export default async function BlogPostPage({ params }: Props) {
 
         {/* 文章底部 */}
         <footer className="mt-12 border-t pt-8">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-muted-foreground text-sm">{t('shareArticle')}</p>
-            </div>
+          <div className="flex items-center justify-end">
             <Button variant="outline" asChild>
               <Link href={`/${locale}/blog`}>{t('backToBlog')}</Link>
             </Button>

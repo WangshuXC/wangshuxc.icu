@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import { GifAsciiBackground } from './gif-ascii-background';
 
 interface HeroSectionProps {
   greeting?: string;
@@ -8,6 +9,7 @@ interface HeroSectionProps {
   role?: string;
   company?: string;
   location?: string;
+  backgroundGif?: string;
 }
 
 export function HeroSection({
@@ -16,16 +18,30 @@ export function HeroSection({
   role,
   company,
   location,
+  backgroundGif,
 }: HeroSectionProps) {
   const t = useTranslations('heroSection');
 
   return (
-    <section className="h-screen container flex flex-col items-center justify-center py-20 md:py-32">
-      <div className="mx-auto max-w-4xl text-center">
+    <section className="relative h-screen container flex flex-col items-center justify-center py-20 md:py-32 overflow-hidden">
+      {/* ASCII 背景 */}
+      {backgroundGif && (
+        <GifAsciiBackground
+          gifUrl={backgroundGif}
+          width={80}
+          height={60}
+          fontSize={12}
+          fps={15}
+          className="absolute right-0 bottom-[140px] z-0 hidden sm:block"
+          charset="@%#*+=-:. "
+        />
+      )}
+
+      <div className="relative z-10 mx-auto max-w-4xl text-center">
         {/* Greeting */}
         <h1 className="mb-6 font-bold text-5xl text-foreground md:text-6xl lg:text-8xl">
           {greeting || t('greeting')}{' '}
-          <span className="bg-gradient-to-r from-sky-400 to-sky-600 bg-clip-text text-transparent">
+          <span className="bg-linear-to-r from-sky-400 to-sky-600 bg-clip-text text-transparent">
             {name || t('name')}
           </span>{' '}
           👋

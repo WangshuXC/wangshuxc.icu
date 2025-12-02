@@ -77,7 +77,6 @@ export default async function FriendLinkPage({ params }: Props) {
                     访问
                     <ExternalLinkIcon className="h-3 w-3" />
                   </Link>
-                  <span className="text-muted-foreground text-xs">#{index + 1}</span>
                 </div>
                 
                 {/* URL 显示 */}

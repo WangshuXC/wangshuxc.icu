@@ -33,62 +33,60 @@ export default async function BlogPage({ params }: Props) {
         <div className="grid gap-6">
           {posts.map((post) => {
             const frontmatter = post.data as BlogFrontmatter;
+            const postUrl = `/${locale}/blog/${post.slugs.slice(1).join('/')}`;
 
             return (
-              <Card key={post.url} className="transition-shadow hover:shadow-lg">
-                <CardHeader>
-                  <div className="flex items-start justify-between">
-                    <div className="flex-1">
-                      <CardTitle className="mb-2 text-2xl">
-                        <Link
-                          href={`/${locale}/blog/${post.slugs.slice(1).join('/')}`}
-                          className="transition-colors hover:text-primary"
-                        >
+              <Link key={post.url} href={postUrl} className="block">
+                <Card className="h-full cursor-pointer transition-shadow hover:shadow-lg">
+                  <CardHeader>
+                    <div className="flex items-start justify-between">
+                      <div className="flex-1">
+                        <CardTitle className="mb-2 text-2xl transition-colors hover:text-primary">
                           {frontmatter.title}
-                        </Link>
-                      </CardTitle>
-                      {frontmatter.description && (
-                        <CardDescription className="text-base">
-                          {frontmatter.description}
-                        </CardDescription>
+                        </CardTitle>
+                        {frontmatter.description && (
+                          <CardDescription className="text-base">
+                            {frontmatter.description}
+                          </CardDescription>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="mt-4 flex flex-wrap items-center gap-4 text-muted-foreground text-sm">
+                      {frontmatter.author && (
+                        <div className="flex items-center gap-1">
+                          <UserIcon className="h-4 w-4" />
+                          <span>{frontmatter.author}</span>
+                        </div>
                       )}
-                    </div>
-                  </div>
 
-                  <div className="mt-4 flex flex-wrap items-center gap-4 text-muted-foreground text-sm">
-                    {frontmatter.author && (
+                      {frontmatter.date && (
+                        <div className="flex items-center gap-1">
+                          <CalendarIcon className="h-4 w-4" />
+                          <span>{formatDate(frontmatter.date, locale)}</span>
+                        </div>
+                      )}
+
                       <div className="flex items-center gap-1">
-                        <UserIcon className="h-4 w-4" />
-                        <span>{frontmatter.author}</span>
+                        <ClockIcon className="h-4 w-4" />
+                        <span>{t('aboutReadingTime', { time: 5 })}</span>
                       </div>
-                    )}
+                    </div>
+                  </CardHeader>
 
-                    {frontmatter.date && (
-                      <div className="flex items-center gap-1">
-                        <CalendarIcon className="h-4 w-4" />
-                        <span>{formatDate(frontmatter.date, locale)}</span>
+                  {frontmatter.tags && frontmatter.tags.length > 0 && (
+                    <CardContent>
+                      <div className="flex flex-wrap gap-2">
+                        {frontmatter.tags.map((tag) => (
+                          <Badge key={tag} variant="secondary">
+                            {tag}
+                          </Badge>
+                        ))}
                       </div>
-                    )}
-
-                    <div className="flex items-center gap-1">
-                      <ClockIcon className="h-4 w-4" />
-                      <span>{t('aboutReadingTime', { time: 5 })}</span>
-                    </div>
-                  </div>
-                </CardHeader>
-
-                {frontmatter.tags && frontmatter.tags.length > 0 && (
-                  <CardContent>
-                    <div className="flex flex-wrap gap-2">
-                      {frontmatter.tags.map((tag) => (
-                        <Badge key={tag} variant="secondary">
-                          {tag}
-                        </Badge>
-                      ))}
-                    </div>
-                  </CardContent>
-                )}
-              </Card>
+                    </CardContent>
+                  )}
+                </Card>
+              </Link>
             );
           })}
         </div>

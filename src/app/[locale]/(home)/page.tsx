@@ -1,4 +1,4 @@
-import { HeroSection } from '@/components/blocks/hero-section';
+import { HeroSection } from '@/components/blocks/hero/hero-section';
 import { SkillsSection } from '@/components/blocks/skills-section';
 import { TechStack } from '@/components/blocks/tech-stack';
 import { WorkspaceSection } from '@/components/blocks/workspace-section';
@@ -8,7 +8,7 @@ export default function HomePage() {
   return (
     <div className="relative">
       {/* Hero Section - Introduction */}
-      <HeroSection />
+      <HeroSection backgroundGif='/images/alice-aris.gif' />
 
       {/* Skills Section - Programming, Markup, Editors */}
       <SkillsSection />
@@ -17,7 +17,7 @@ export default function HomePage() {
       <TechStack />
 
       {/* Workspace Section - Hardware Specs */}
-      <WorkspaceSection />
+      {/* <WorkspaceSection /> */}
     </div>
   );
 }
