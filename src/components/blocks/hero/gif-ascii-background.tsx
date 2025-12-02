@@ -225,7 +225,7 @@ export function GifAsciiBackground({
 
   return (
     <pre
-      className={`pointer-events-none flex items-center justify-center overflow-hidden font-mono leading-none text-muted-foreground/30 ${className}`}
+      className={`pointer-events-none flex items-center justify-center overflow-hidden font-mono leading-none ${className}`}
       style={{
         fontSize: `${fontSize}px`,
         lineHeight: `${fontSize}px`,

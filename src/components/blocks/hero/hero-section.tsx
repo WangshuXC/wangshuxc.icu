@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { GifAsciiBackground } from './gif-ascii-background';
+import { ColorfulText } from '@/components/ui/colorful-text';
 
 interface HeroSectionProps {
   greeting?: string;
@@ -32,7 +33,7 @@ export function HeroSection({
           height={60}
           fontSize={12}
           fps={15}
-          className="absolute right-0 bottom-[140px] z-0 hidden sm:block"
+          className="absolute right-0 bottom-[140px] z-0 hidden sm:block text-muted-foreground/30"
           charset="@%#*+=-:. "
         />
       )}
@@ -41,10 +42,9 @@ export function HeroSection({
         {/* Greeting */}
         <h1 className="mb-6 font-bold text-5xl text-foreground md:text-6xl lg:text-8xl">
           {greeting || t('greeting')}{' '}
-          <span className="bg-linear-to-r from-sky-400 to-sky-600 bg-clip-text text-transparent">
-            {name || t('name')}
-          </span>{' '}
-          👋
+          <br />
+          <ColorfulText text={name || t('name')} />
+          {' '}👋
         </h1>
 
         {/* Job Title */}
