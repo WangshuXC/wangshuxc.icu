@@ -120,8 +120,6 @@ export function GifAsciiBackground({
   // 解析 GIF 文件
   const loadGif = useCallback(async (url: string) => {
     try {
-      console.log('Loading GIF from:', url);
-      
       // 获取 GIF 文件
       const response = await fetch(url);
       const arrayBuffer = await response.arrayBuffer();
@@ -129,8 +127,6 @@ export function GifAsciiBackground({
       // 解析 GIF
       const gif = parseGIF(arrayBuffer);
       const parsedFrames = decompressFrames(gif, true);
-      
-      console.log('GIF parsed, total frames:', parsedFrames.length);
 
       // 转换帧数据并过滤空白帧
       const processedFrames: ParsedFrame[] = [];
@@ -142,7 +138,7 @@ export function GifAsciiBackground({
         
         // 复制像素数据
         for (let i = 0; i < patch.length; i++) {
-          frameData[i] = patch[i];
+          frameData[i] = patch[i] ?? 0;
         }
         
         // 检查是否为空白帧
@@ -153,26 +149,24 @@ export function GifAsciiBackground({
             width: frame.dims.width,
             height: frame.dims.height,
           });
-        } else {
-          console.log('Skipped blank frame');
         }
       }
 
-      console.log('Valid frames after filtering:', processedFrames.length);
       setFrames(processedFrames);
 
       // 立即显示第一帧
       if (processedFrames.length > 0) {
         const firstFrame = processedFrames[0];
-        const ascii = imageDataToAscii(
-          firstFrame.data,
-          firstFrame.width,
-          firstFrame.height,
-          width,
-          height
-        );
-        setAsciiText(ascii);
-        console.log('First frame rendered, size:', firstFrame.width, 'x', firstFrame.height);
+        if (firstFrame) {
+          const ascii = imageDataToAscii(
+            firstFrame.data,
+            firstFrame.width,
+            firstFrame.height,
+            width,
+            height
+          );
+          setAsciiText(ascii);
+        }
       }
     } catch (error) {
       console.error('Error loading GIF:', error);
