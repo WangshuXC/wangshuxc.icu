@@ -2,9 +2,21 @@ import { blog } from '@/.source';
 import { loader } from 'fumadocs-core/source';
 import type { InferMetaType, InferPageType } from 'fumadocs-core/source';
 
+// Create source with proper type handling
+// In fumadocs-mdx v11, toFumadocsSource() returns { files: () => VirtualFile[] }
+// but the type definition expects { files: VirtualFile[] }
+// We need to call the files function to get the array
+const rawSource = blog.toFumadocsSource() as ReturnType<typeof blog.toFumadocsSource> & {
+  files: (() => any[]) | any[];
+};
+const source: typeof rawSource = {
+  ...rawSource,
+  files: typeof rawSource.files === 'function' ? rawSource.files() : rawSource.files
+};
+
 export const blogSource = loader({
   baseUrl: '/blog',
-  source: blog.toFumadocsSource(),
+  source,
 });
 
 export type BlogMeta = InferMetaType<typeof blogSource>;

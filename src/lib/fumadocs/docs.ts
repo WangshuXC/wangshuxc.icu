@@ -2,9 +2,21 @@ import { docs } from '@/.source';
 import { loader } from 'fumadocs-core/source';
 import type { InferMetaType, InferPageType } from 'fumadocs-core/source';
 
+// Create source with proper type handling
+// In fumadocs-mdx v11, toFumadocsSource() returns { files: () => VirtualFile[] }
+// but the type definition expects { files: VirtualFile[] }
+// We need to call the files function to get the array
+const rawSource = docs.toFumadocsSource() as ReturnType<typeof docs.toFumadocsSource> & {
+  files: (() => any[]) | any[];
+};
+const source: typeof rawSource = {
+  ...rawSource,
+  files: typeof rawSource.files === 'function' ? rawSource.files() : rawSource.files
+};
+
 export const docsSource = loader({
   baseUrl: '/docs',
-  source: docs.toFumadocsSource(),
+  source,
 });
 
 export type DocsMeta = InferMetaType<typeof docsSource>;
@@ -36,20 +48,17 @@ export interface DocsTreeItem {
 // Cloudflare Workers compatible meta config getter
 function getMetaConfigFromSource(locale: string, folderPath = ''): MetaConfig | null {
   try {
-    // Access the compiled meta data from .source/index.ts
-    const sourceData = docs.toFumadocsSource();
-    
     // Build the expected meta path
     const metaPath = folderPath ? `${locale}/${folderPath}/meta.json` : `${locale}/meta.json`;
     
-    // Find the meta file in the source data
-    // The files property is an array from fumadocs-mdx
-    const metaFile = sourceData?.files?.find(file => 
-      file.path === metaPath && file.type === 'meta'
+    // Access meta data directly from docs source
+    // docs.meta contains all meta.json files
+    const metaEntry = docs.meta.find(m => 
+      m._file.path === metaPath
     );
     
-    if (metaFile?.data) {
-      return metaFile.data as MetaConfig;
+    if (metaEntry) {
+      return metaEntry as unknown as MetaConfig;
     }
     
     return null;
