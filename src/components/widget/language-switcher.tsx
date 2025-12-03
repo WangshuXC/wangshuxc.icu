@@ -58,7 +58,7 @@ export function LanguageSwitcher() {
         <Button variant="ghost" size="sm" className="gap-2">
           <Globe className="h-4 w-4" />
           <span 
-            className={`transition-all duration-300 ease-in-out overflow-hidden ${
+            className={`transition-all duration-300 ease-in-out mb-1 overflow-hidden ${
               !visible 
                 ? 'opacity-100 max-w-[100px] ml-2' 
                 : 'opacity-0 max-w-0 -ml-2'

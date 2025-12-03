@@ -4,7 +4,7 @@ import type { CategoryInfo, ComponentInfo } from "@/types/blocks";
 
 import { Faq } from "@/components/blocks/faq/faq";
 import { Footer } from "@/components/blocks/footer/footer";
-import { TechStack } from "@/components/blocks/tech-stack";
+import { TechStack } from "@/components/blocks/home/tech-stack";
 
 // 组件分类定义
 export const categories: CategoryInfo[] = [

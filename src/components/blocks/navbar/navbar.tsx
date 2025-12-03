@@ -81,16 +81,6 @@ export function ResizableNavbar() {
                     <NavbarButton variant="secondary" className="p-0">
                         <LanguageSwitcher />
                     </NavbarButton>
-
-                    {/* <DesktopAuthDisplay
-                        loginText={auth.login.text}
-                        loginUrl={auth.login.url}
-                        signupText={auth.signup.text}
-                        signupUrl={auth.signup.url}
-                        isAuthenticated={isAuthenticated}
-                        isLoading={isLoading}
-                        isInitialized={isInitialized}
-                    /> */}
                 </div>
             </NavBody>
 

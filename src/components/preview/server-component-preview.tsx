@@ -1,6 +1,6 @@
 import { Faq } from '@/components/blocks/faq/faq';
 import { Footer } from '@/components/blocks/footer/footer';
-import { TechStack } from '@/components/blocks/tech-stack';
+import { TechStack } from '@/components/blocks/home/tech-stack';
 import { ComponentPreviewWrapper } from './component-preview-wrapper';
 
 interface ServerComponentPreviewProps {

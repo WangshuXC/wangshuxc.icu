@@ -1,4 +1,7 @@
+'use client';
+
 import { useTranslations } from "next-intl";
+import { MotionWrapper, StaggerContainer, StaggerItem } from '@/components/motion-wrapper';
 
 interface TechStackProps {
   heading?: string;
@@ -192,35 +195,31 @@ const TechStack = ({ heading, description }: TechStackProps) => {
     <section className="py-16">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="mb-12 text-center">
+        <MotionWrapper variant="fadeUp" className="mb-12 text-center">
           <h2 className="mb-4 font-bold text-3xl text-foreground md:text-4xl">
             {heading || t('heading')}
           </h2>
           <p className="text-muted-foreground text-lg">
             {description || t('description')}
           </p>
-        </div>
+        </MotionWrapper>
 
-        <div className="flex flex-wrap items-center justify-center gap-8 transition-opacity duration-500 md:gap-12 lg:gap-16">
-          {techLogos.map((tech, index) => (
-            <div
-              key={tech.name}
-              className="group flex cursor-pointer flex-col items-center"
-              style={{
-                animationDelay: `${index * 0.1}s`,
-              }}
-            >
-              <div className="rounded-2xl border border-border/50 bg-background/50 p-4 backdrop-blur-sm transition-all duration-300 group-hover:scale-110 group-hover:border-primary/20 group-hover:bg-background/80 group-hover:shadow-lg">
-                <div className="text-foreground transition-colors duration-300 group-hover:text-foreground/80">
-                  {tech.icon}
+        <StaggerContainer className="flex flex-wrap items-center justify-center gap-8 transition-opacity duration-500 md:gap-12 lg:gap-16">
+          {techLogos.map((tech) => (
+            <StaggerItem key={tech.name} variant="scale">
+              <div className="group flex cursor-pointer flex-col items-center">
+                <div className="rounded-2xl border border-border/50 bg-background/50 p-4 backdrop-blur-sm transition-all duration-300 group-hover:scale-110 group-hover:border-primary/20 group-hover:bg-background/80 group-hover:shadow-lg">
+                  <div className="text-foreground transition-colors duration-300 group-hover:text-foreground/80">
+                    {tech.icon}
+                  </div>
                 </div>
+                <span className="mt-3 font-medium text-foreground text-sm transition-colors duration-300 group-hover:text-muted-foreground">
+                  {tech.name}
+                </span>
               </div>
-              <span className="mt-3 font-medium text-foreground text-sm transition-colors duration-300 group-hover:text-muted-foreground">
-                {tech.name}
-              </span>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );
