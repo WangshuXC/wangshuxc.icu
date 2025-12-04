@@ -15,7 +15,7 @@ import { ThemeToggle } from '@/components/widget/theme-toggle';
 import { UserAvatarMenu } from '@/components/widget/user-avatar-menu';
 import { useState } from "react";
 import { useNavbar } from '@/hooks/use-navbar';
-import Link from "next/link";
+import { TransitionLink } from "@/components/page-transition";
 
 function MobileAuthDisplay({
     loginText,
@@ -99,13 +99,14 @@ export function ResizableNavbar() {
                     onClose={() => setIsMobileMenuOpen(false)}
                 >
                     {menu.map((item, idx) => (
-                        <Link
+                        <TransitionLink
                             key={`mobile-link-${idx}`}
                             href={item.url}
                             className="relative text-neutral-600 dark:text-neutral-300"
+                            onClick={() => setIsMobileMenuOpen(false)}
                         >
                             <span className="block">{item.title}</span>
-                        </Link>
+                        </TransitionLink>
                     ))}
                     <div className="flex w-full gap-4">
                         <LanguageSwitcher />
