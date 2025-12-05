@@ -1,7 +1,23 @@
 'use client';
 
 import { useTranslations } from "next-intl";
-import { MotionWrapper, StaggerContainer, StaggerItem } from '@/components/motion-wrapper';
+import dynamic from 'next/dynamic';
+
+// 延迟加载动画组件
+const MotionWrapper = dynamic(
+  () => import('@/components/motion-wrapper').then((mod) => mod.MotionWrapper),
+  { ssr: false }
+);
+
+const StaggerContainer = dynamic(
+  () => import('@/components/motion-wrapper').then((mod) => mod.StaggerContainer),
+  { ssr: false }
+);
+
+const StaggerItem = dynamic(
+  () => import('@/components/motion-wrapper').then((mod) => mod.StaggerItem),
+  { ssr: false }
+);
 
 interface TechStackProps {
   heading?: string;

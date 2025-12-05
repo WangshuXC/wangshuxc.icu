@@ -2,7 +2,23 @@
 
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import { MotionWrapper, StaggerContainer, StaggerItem } from '@/components/motion-wrapper';
+import dynamic from 'next/dynamic';
+
+// 延迟加载动画组件
+const MotionWrapper = dynamic(
+  () => import('@/components/motion-wrapper').then((mod) => mod.MotionWrapper),
+  { ssr: false }
+);
+
+const StaggerContainer = dynamic(
+  () => import('@/components/motion-wrapper').then((mod) => mod.StaggerContainer),
+  { ssr: false }
+);
+
+const StaggerItem = dynamic(
+  () => import('@/components/motion-wrapper').then((mod) => mod.StaggerItem),
+  { ssr: false }
+);
 
 interface ProgrammingLanguage {
   name: string;
@@ -65,6 +81,7 @@ export function SkillsSection({ heading, description }: SkillsSectionProps) {
                         src={lang.imagePath}
                         alt={lang.name}
                         fill
+                        loading="lazy"
                         className="object-contain transition-opacity duration-300 group-hover:opacity-80"
                       />
                     </div>
