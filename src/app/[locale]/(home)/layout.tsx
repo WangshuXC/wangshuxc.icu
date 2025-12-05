@@ -1,18 +1,8 @@
 import { Footer } from "@/components/blocks/footer/footer";
 import type { ReactNode } from "react";
 import { ResizableNavbar } from "@/components/blocks/navbar/navbar";
-import dynamic from "next/dynamic";
-
-// 延迟加载非关键的页面过渡和滚动进度组件
-const PageTransition = dynamic(
-  () => import("@/components/page-transition").then((mod) => mod.PageTransition),
-  { ssr: false }
-);
-
-const ScrollProgress = dynamic(
-  () => import("@/components/scroll-progress").then((mod) => mod.ScrollProgress),
-  { ssr: false }
-);
+import { PageTransition } from "@/components/page-transition";
+import { ScrollProgress } from "@/components/scroll-progress";
 
 type Props = {
   children: ReactNode;

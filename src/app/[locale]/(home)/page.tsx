@@ -1,3 +1,5 @@
+"use client";
+
 import { HeroSection } from "@/components/blocks/home/hero-section";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
