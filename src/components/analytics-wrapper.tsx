@@ -1,6 +1,7 @@
 "use client";
 
 import { Analytics, type BeforeSendEvent } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import { useIsAdmin } from "@/components/auth/permission-provider";
 
 /**
@@ -11,13 +12,16 @@ export function AnalyticsWrapper() {
   const isAdmin = useIsAdmin();
 
   return (
-    <Analytics
-      beforeSend={(event: BeforeSendEvent) => {
-        if (isAdmin) {
-          return null;
-        }
-        return event;
-      }}
-    />
+    <>
+      <Analytics
+        beforeSend={(event: BeforeSendEvent) => {
+          if (isAdmin) {
+            return null;
+          }
+          return event;
+        }}
+      />
+      <SpeedInsights/>
+    </>
   );
 }
