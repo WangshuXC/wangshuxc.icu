@@ -1,8 +1,6 @@
 import { cn } from '@/lib/utils';
 import {
-  IconCloud,
   IconCurrencyDollar,
-  IconEaseInOut,
   IconHeart,
   IconHelp,
 } from '@/lib/icons';
@@ -10,20 +8,9 @@ import {
 export function Features() {
   const features = [
     {
-      title: 'Database',
-      description: 'Access your data in a type-safe way with Drizzle ORM.',
-      icon: <IconEaseInOut />,
-    },
-    {
       title: 'Saas Blog',
       description: 'Multi-language, MDX-based blog to write about your product.',
       icon: <IconCurrencyDollar />,
-    },
-    {
-      title: 'SaaS Documentation',
-      description:
-        'Multi-language, MDX-based documentation to help your users get started with your product.',
-      icon: <IconCloud />,
     },
     {
       title: 'Internationalization',

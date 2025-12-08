@@ -2,21 +2,6 @@ import type { FeaturesConfig } from "@/types";
 
 
 export const featuresConfig: FeaturesConfig = {
-  // Authentication features
-  auth: {
-    enabled: false,
-    providers: {
-      email: false,
-      github: false,
-      google: false,
-    },
-    session: {
-      maxAge: 30 * 24 * 60 * 60, // 30 days
-    },
-    passwordReset: false,
-    emailVerification: false,
-  },
-
   // Blog features
   blog: {
     enabled: true,
@@ -24,15 +9,6 @@ export const featuresConfig: FeaturesConfig = {
     tagsEnabled: true,
     authorsEnabled: true,
     searchEnabled: true,
-  },
-
-  // Documentation features
-  docs: {
-    enabled: true,
-    searchEnabled: true,
-    editOnGithub: true,
-    tableOfContents: true,
-    breadcrumbs: true,
   },
 
   // Analytics features

@@ -175,61 +175,6 @@ export const components: Omit<ComponentInfo, "component">[] = [
             </svg>
           ),
         },
-        {
-          name: 'Better Auth',
-          icon: (
-            <svg
-              width="100%"
-              height="100%"
-              className="h-8 w-auto stroke-1 md:h-10"
-              viewBox="0 0 60 45"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <title>Better Auth</title>
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                fill="currentColor"
-                d="M0 0H15V15H30V30H15V45H0V30V15V0ZM45 30V15H30V0H45H60V15V30V45H45H30V30H45Z"
-              />
-            </svg>
-          ),
-        },
-        {
-          name: 'Drizzle',
-          icon: (
-            <svg
-              width="100%"
-              height="100%"
-              className="h-8 w-12 stroke-1 md:h-10"
-              viewBox="0 0 100 53"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <title>Drizzle</title>
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M50.7023 0.926339C52.7965 2.09615 53.5273 4.73165 52.3346 6.8129L38.3341 31.2437C37.1414 33.3249 34.4768 34.0638 32.3826 32.894C30.2884 31.7242 29.5576 29.0887 30.7503 27.0074L44.7509 2.57665C45.9436 0.495397 48.6081 -0.243471 50.7023 0.926339ZM20.5246 19.6607C22.6188 20.8305 23.3496 23.466 22.1569 25.5473L8.15636 49.9781C6.96366 52.0593 4.2991 52.7982 2.2049 51.6284C0.110706 50.4585 -0.620101 47.823 0.572601 45.7418L14.5731 21.311C15.7658 19.2298 18.4304 18.4909 20.5246 19.6607ZM98.7692 6.8129C99.9619 4.73165 99.2311 2.09615 97.1369 0.926339C95.0427 -0.243471 92.3782 0.495397 91.1854 2.57665L77.1849 27.0074C75.9922 29.0887 76.723 31.7242 78.8172 32.894C80.9114 34.0638 83.576 33.3249 84.7687 31.2437L98.7692 6.8129ZM66.9494 19.6607C69.0436 20.8305 69.7744 23.466 68.5817 25.5473L54.5812 49.9781C53.3885 52.0593 50.7239 52.7982 48.6297 51.6284C46.5355 50.4585 45.8047 47.823 46.9974 45.7418L60.9979 21.311C62.1906 19.2298 64.8552 18.4909 66.9494 19.6607Z"
-                fill="url(#paint0_linear_1913_43)"
-              />
-              <defs>
-                <linearGradient
-                  id="paint0_linear_1913_43"
-                  x1="0.146485"
-                  y1="51.918"
-                  x2="106.646"
-                  y2="-0.0820361"
-                  gradientUnits="userSpaceOnUse"
-                >
-                  <stop stopColor="#C14239" />
-                  <stop offset="1" stopColor="#CC54C1" />
-                </linearGradient>
-              </defs>
-            </svg>
-          ),
-        },
       ];
     
       return (

@@ -66,33 +66,12 @@ export interface I18nConfig {
 }
 
 export interface FeaturesConfig {
-  auth: {
-    enabled: boolean;
-    providers: {
-      email: boolean;
-      github: boolean;
-      google: boolean;
-    };
-    session: {
-      maxAge: number;
-    };
-    passwordReset: boolean;
-    emailVerification: boolean;
-  };
-
   blog: {
     enabled: boolean;
     commentsEnabled: boolean;
     tagsEnabled: boolean;
     authorsEnabled: boolean;
     searchEnabled: boolean;
-  };
-  docs: {
-    enabled: boolean;
-    searchEnabled: boolean;
-    editOnGithub: boolean;
-    tableOfContents: boolean;
-    breadcrumbs: boolean;
   };
   analytics: {
     enabled: boolean;
@@ -230,23 +209,6 @@ export interface ProtectedSidebarProps {
 export interface ProtectedContainerProps {
   children: React.ReactNode;
   sidebarGroups: SidebarGroup[];
-}
-
-// Better Auth type extensions
-declare module 'better-auth/types' {
-  interface User {
-    id: string;
-    name: string;
-    email: string;
-    emailVerified: boolean;
-    image?: string | null;
-    createdAt: Date;
-    updatedAt: Date;
-    role?: string | null;
-    banned?: boolean | null;
-    banReason?: string | null;
-    banExpires?: Date | null;
-  }
 }
 
 // FriendLink config

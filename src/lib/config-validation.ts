@@ -44,32 +44,12 @@ export const appConfigSchema = z.object({
 
 // Features configuration schema
 export const featuresConfigSchema = z.object({
-  auth: z.object({
-    enabled: z.boolean(),
-    providers: z.object({
-      email: z.boolean(),
-      github: z.boolean(),
-      google: z.boolean(),
-    }),
-    session: z.object({
-      maxAge: z.number().positive('Session max age must be positive'),
-    }),
-    passwordReset: z.boolean(),
-    emailVerification: z.boolean(),
-  }),
   blog: z.object({
     enabled: z.boolean(),
     commentsEnabled: z.boolean(),
     tagsEnabled: z.boolean(),
     authorsEnabled: z.boolean(),
     searchEnabled: z.boolean(),
-  }),
-  docs: z.object({
-    enabled: z.boolean(),
-    searchEnabled: z.boolean(),
-    editOnGithub: z.boolean(),
-    tableOfContents: z.boolean(),
-    breadcrumbs: z.boolean(),
   }),
   analytics: z.object({
     enabled: z.boolean(),
@@ -212,8 +192,6 @@ function validateCrossReferences(configs: {
 export function validateEnvironmentConfig() {
   const requiredEnvVars = [
     'NEXT_PUBLIC_APP_URL',
-    'DATABASE_URL',
-    'BETTER_AUTH_SECRET',
   ];
 
   const missingVars = requiredEnvVars.filter(varName => !process.env[varName]);
