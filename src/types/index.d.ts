@@ -73,26 +73,6 @@ export interface FeaturesConfig {
     authorsEnabled: boolean;
     searchEnabled: boolean;
   };
-  analytics: {
-    enabled: boolean;
-    provider: 'vercel' | 'google' | 'plausible';
-    trackingId?: string;
-  };
-  notifications: {
-    enabled: boolean;
-    emailNotifications: boolean;
-    pushNotifications: boolean;
-    inAppNotifications: boolean;
-  };
-  dashboard: {
-    enabled: boolean;
-    widgets: {
-      analytics: boolean;
-      recentActivity: boolean;
-      quickActions: boolean;
-      notifications: boolean;
-    };
-  };
 }
 
 export interface ThemeConfig {

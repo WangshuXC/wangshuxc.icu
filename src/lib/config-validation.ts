@@ -51,26 +51,6 @@ export const featuresConfigSchema = z.object({
     authorsEnabled: z.boolean(),
     searchEnabled: z.boolean(),
   }),
-  analytics: z.object({
-    enabled: z.boolean(),
-    provider: z.enum(['vercel', 'google', 'plausible']),
-    trackingId: z.string().optional(),
-  }),
-  notifications: z.object({
-    enabled: z.boolean(),
-    emailNotifications: z.boolean(),
-    pushNotifications: z.boolean(),
-    inAppNotifications: z.boolean(),
-  }),
-  dashboard: z.object({
-    enabled: z.boolean(),
-    widgets: z.object({
-      analytics: z.boolean(),
-      recentActivity: z.boolean(),
-      quickActions: z.boolean(),
-      notifications: z.boolean(),
-    }),
-  }),
 });
 
 // I18n configuration schema
