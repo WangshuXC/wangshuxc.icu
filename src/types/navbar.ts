@@ -18,27 +18,11 @@ export interface LogoConfig {
   title: string;
 }
 
-// 认证配置类型
-export interface AuthConfig {
-  login: {
-    text: string;
-    url: string;
-  };
-  signup: {
-    text: string;
-    url: string;
-  };
-}
-
 // 导航栏组件的props类型
 export interface NavbarProps {
   logo: LogoConfig;
   menu: MenuItem[];
-  auth: AuthConfig;
   locale: string;
-  isAuthenticated: boolean;
-  isLoading: boolean;
-  isInitialized: boolean;
   onPricingClick: () => void;
 }
 
@@ -46,10 +30,6 @@ export interface NavbarProps {
 export interface UseNavbarReturn {
   logo: LogoConfig;
   menu: MenuItem[];
-  auth: AuthConfig;
   locale: string;
-  isAuthenticated: boolean;
-  isLoading: boolean;
-  isInitialized: boolean;
   handlePricingClick: () => void;
 } 

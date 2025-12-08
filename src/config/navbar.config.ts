@@ -9,18 +9,6 @@ export const navbarConfig: NavbarConfig = {
     title: "logo.title", // i18n key
   },
 
-  // Authentication configuration
-  auth: {
-    login: {
-      text: "auth.login", // i18n key
-      url: "/login",
-    },
-    signup: {
-      text: "auth.signup", // i18n key
-      url: "/signup",
-    },
-  },
-
   // Menu configuration
   menu: {
     items: [

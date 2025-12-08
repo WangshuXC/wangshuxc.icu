@@ -108,50 +108,6 @@ export function useBreakpoints() {
 }
 
 /**
- * Hook to get admin configuration
- */
-export function useAdminConfig() {
-  const appConf = useAppConfig();
-  const featuresConf = useFeaturesConfig();
-
-  return useMemo(
-    () => ({
-      emails: appConf.admin.emails,
-      features: featuresConf.admin,
-    }),
-    [appConf, featuresConf]
-  );
-}
-
-/**
- * Hook to check if user is admin
- */
-export function useIsAdmin(userEmail?: string | null): boolean {
-  const { emails } = useAdminConfig();
-
-  return useMemo(() => {
-    if (!userEmail || emails.length === 0) return false;
-    return emails.includes(userEmail);
-  }, [userEmail, emails]);
-}
-
-/**
- * Hook to get upload configuration
- */
-export function useUploadConfig() {
-  const appConf = useAppConfig();
-  const featuresConf = useFeaturesConfig();
-
-  return useMemo(
-    () => ({
-      ...appConf.upload,
-      ...featuresConf.fileManager,
-    }),
-    [appConf, featuresConf]
-  );
-}
-
-/**
  * Hook to get pagination configuration
  */
 export function usePaginationConfig() {

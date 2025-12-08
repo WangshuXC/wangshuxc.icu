@@ -8,115 +8,16 @@
   "toast": {
     "success": {
       "nameUpdated": "Name updated successfully",
-      "avatarUpdated": "Avatar updated successfully",
-      "loginSuccess": "Login successful"
+      "avatarUpdated": "Avatar updated successfully"
     },
     "error": {
       "nameEmpty": "Name cannot be empty",
       "nameUpdateFailed": "Name update failed",
-      "avatarUpdateFailed": "Avatar update failed",
-      "fileUploadFailed": "File upload failed",
-      "loginFailed": "Login failed",
-      "socialLoginFailed": "Social login failed"
+      "avatarUpdateFailed": "Avatar update failed"
     },
     "info": {
       "nameNotChanged": "Name has not changed"
     }
-  },
-  "auth": {
-    "login": "Login",
-    "logout": "Logout",
-    "email": "Email",
-    "password": "Password",
-    "signIn": "Sign In",
-    "signUp": "Sign Up",
-    "forgotPassword": "Forgot Password?",
-    "signInToAccount": "Sign in to your account",
-    "createAccount": "Create a new account",
-    "enterEmail": "Enter your email address",
-    "enterPassword": "Enter your password",
-    "githubSignIn": "Sign in with GitHub",
-    "googleSignIn": "Sign in with Google",
-    "loading": "Verifying identity...",
-    "error": "Authentication Error",
-    "accessDenied": "Access Denied",
-    "loginRequired": "Please login to access this page",
-    "goToLogin": "Go to Login",
-    "retry": "Retry",
-    "refreshSession": "Refresh Session",
-    "welcomeBack": "Welcome back",
-    "loginWithSocial": "Sign in with your GitHub or Google account",
-    "loggingIn": "Signing in...",
-    "orUseEmail": "Or continue with email",
-    "emailPlaceholder": "m@example.com",
-    "closeError": "Close",
-    "name": "Name",
-    "namePlaceholder": "John Doe",
-    "confirmPassword": "Confirm Password",
-    "passwordMismatch": "Passwords do not match",
-    "signupWithSocial": "Sign up with your GitHub or Google account",
-    "githubSignUp": "Sign up with GitHub",
-    "googleSignUp": "Sign up with Google",
-    "signingUp": "Signing up...",
-    "orContinueWith": "Or continue with",
-    "signUpButton": "Sign Up",
-    "noAccount": "Don't have an account?",
-    "signUpLink": "Sign up",
-    "alreadyHaveAccount": "Already have an account?",
-    "loginLink": "Sign in",
-    "termsOfService": "Terms of Service",
-    "privacyPolicy": "Privacy Policy",
-    "termsAndPrivacy": {
-      "prefix": "By clicking continue, you agree to our",
-      "middle": "and",
-      "suffix": "."
-    }
-  },
-  "dashboard": {
-    "title": "Dashboard",
-    "welcome": "Welcome back! Here's what's happening with your account.",
-    "downloadReport": "Download Report",
-    "addUser": "Add User",
-    "notificationSettings": "Notification Settings",
-    "manageNotifications": "Manage your notification preferences",
-    "newsletterSubscription": "Newsletter Subscription",
-    "manageNewsletter": "Manage your newsletter subscription preferences",
-    "subscribeToNewsletter": "Subscribe to newsletter",
-    "changeAnytime": "You can change your subscription preferences at any time",
-    "emailNotifications": "Email Notifications",
-    "chooseNotifications": "Choose what email notifications you'd like to receive",
-    "marketingEmails": "Marketing emails",
-    "securityAlerts": "Security alerts",
-    "productUpdates": "Product updates",
-    "recentActivity": "Recent Activity",
-    "latestActivity": "Your latest account activity"
-  },
-  "fileManager": {
-    "title": "R2 Image/Video Management",
-    "description": "Browse all files uploaded by users (Admin only).",
-    "uploadFile": "Upload File",
-    "uploadFiles": "Upload Files",
-    "cancel": "Cancel",
-    "uploading": "Uploading...",
-    "dragDropText": "Drag images here, or click to select images",
-    "dragActiveText": "Drop images to upload",
-    "supportedFormats": "Only JPEG and PNG images are supported, maximum {maxSize}MB per file",
-    "selectImages": "Select Images",
-    "uploadFailed": "File upload failed",
-    "fileTooLarge": "File too large",
-    "invalidFileType": "Only JPEG and PNG images are supported",
-    "tooManyFiles": "Too many files",
-    "noFiles": "No image files",
-    "uploadSomeFiles": "Upload some images to start managing your files",
-    "searchPlaceholder": "Filter by filename prefix...",
-    "preview": "Preview",
-    "download": "Download",
-    "delete": "Delete",
-    "type": "Type",
-    "size": "Size",
-    "uploadUser": "Upload User",
-    "lastModified": "Last Modified",
-    "image": "IMAGE"
   },
   "hero": {
     "heading": "Ciallo!",
@@ -188,14 +89,6 @@
       }
     ]
   },
-  "sidebar": {
-    "dashboard": "Dashboard",
-    "users": "Users",
-    "files": "File Manager",
-    "settings": "Settings",
-    "profile": "Profile",
-    "security": "Security"
-  },
   "navbar": {
     "logo": {
       "title": "WangshuXC",
@@ -215,73 +108,6 @@
       "statusDescription": "Check system status",
       "termsOfService": "Terms of Service",
       "termsOfServiceDescription": "Read our terms and conditions"
-    },
-    "auth": {
-      "login": "Log in",
-      "signup": "Sign up"
-    }
-  },
-  "userMenu": {
-    "user": "User",
-    "security": "Security",
-    "profile": "Profile",
-    "settings": "Settings",
-    "logout": "Log out"
-  },
-  "settings": {
-    "title": "Settings",
-    "description": "Manage your account settings and preferences",
-    "profile": {
-      "title": "Profile",
-      "description": "Manage your personal information"
-    },
-    "security": {
-      "title": "Security",
-      "description": "Manage your security settings"
-    },
-    "notifications": {
-      "title": "Notifications",
-      "description": "Manage your notification preferences"
-    }
-  },
-  "profile": {
-    "title": "Profile",
-    "description": "Manage your personal information and preferences",
-    "save": "Save",
-    "saving": "Saving...",
-    "avatar": {
-      "title": "Your Avatar",
-      "description": "To change your avatar, click on the image in this block and select a file from your computer to upload."
-    },
-    "language": {
-      "title": "Your Language",
-      "description": "To change the language of the application, select a language from the list and click save.",
-      "label": "Language"
-    },
-    "name": {
-      "title": "Your Name",
-      "placeholder": "Enter your name"
-    },
-    "email": {
-      "title": "Your Email",
-      "description": "To change your email, enter a new email and click save. You will need to confirm the new email for it to take effect.",
-      "placeholder": "Enter your email address"
-    }
-  },
-  "security": {
-    "title": "Security",
-    "description": "Manage your security settings",
-    "resetPassword": {
-      "title": "Reset Password",
-      "subtitle": "Reset password to enable email login",
-      "description": "Resetting your password will allow you to sign in using your email and password in addition to your social login methods. You will receive an email with instructions to reset your password",
-      "button": "Reset Password"
-    },
-    "deleteAccount": {
-      "title": "Delete Account",
-      "subtitle": "Permanently remove your account and all of its contents",
-      "description": "This action is not reversible, so please continue with caution",
-      "button": "Delete Account"
     }
   },
   "blog": {

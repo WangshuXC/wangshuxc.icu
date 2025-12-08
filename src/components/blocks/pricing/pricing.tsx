@@ -8,7 +8,6 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { Switch } from '@/components/ui/switch';
-import { useIsAuthenticated } from '@/store/auth-store';
 import { useRouter } from '@/i18n/navigation';
 
 interface PricingFeature {
@@ -50,27 +49,16 @@ const Pricing = ({
   const finalHeading = heading || t('heading');
   const finalDescription = description || t('description');
   const [isYearly, setIsYearly] = useState(false);
-  const isAuthenticated = useIsAuthenticated();
   const router = useRouter();
   
   // Use configured plans if not provided as props
   const pricingPlans = plans || [];
 
   const handlePurchaseClick = (plan: PricingPlan) => {
-    if (!isAuthenticated) {
-      // If user is not logged in, redirect to login page
-      router.push('/login');
-      return;
+    // For now, just show the plan info or redirect to contact
+    if (plan.button.url) {
+      router.push(plan.button.url);
     }
-
-    // Free plan redirects directly to dashboard
-    if (plan.id === 'free') {
-      router.push('/dashboard');
-      return;
-    }
-
-    // For paid plans, redirect to dashboard as payment is not integrated
-    router.push('/dashboard');
   };
 
   return (

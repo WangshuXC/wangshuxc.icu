@@ -30,7 +30,6 @@ export {
 
 // 操作相关图标
 export {
-  Upload,
   Download,
   Trash2,
   Edit,
@@ -80,21 +79,6 @@ export {
   Moon,
   Sun,
   Monitor,
-} from 'lucide-react';
-
-// 文件管理图标
-export {
-  File,
-  FileImage,
-  Image,
-  Folder,
-} from 'lucide-react';
-
-// 支付相关图标
-export {
-  CreditCard,
-  Calendar,
-  ExternalLink,
 } from 'lucide-react';
 
 // 其他常用图标

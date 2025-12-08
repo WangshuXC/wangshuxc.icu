@@ -1,11 +1,10 @@
 
 import { useParams, useRouter } from 'next/navigation';
-import { useAuthInitialized, useAuthLoading, useIsAuthenticated } from '@/store/auth-store';
 import { useNavbarConfig } from '@/hooks/use-config';
 import { Book, Sunset, Trees, Zap } from 'lucide-react';
 import { createElement } from 'react';
 import { useTranslations } from 'next-intl';
-import type { UseNavbarReturn, LogoConfig, AuthConfig, MenuItem } from '@/types/navbar';
+import type { UseNavbarReturn, LogoConfig, MenuItem } from '@/types/navbar';
 import type { NavbarMenuItem } from '@/types';
 import type { JSX } from 'react';
 
@@ -49,10 +48,6 @@ export function useNavbar(): UseNavbarReturn {
   const locale = (params?.locale as string) || 'en';
   const t = useTranslations('navbar');
 
-  const isAuthenticated = useIsAuthenticated();
-  const isLoading = useAuthLoading();
-  const isInitialized = useAuthInitialized();
-
   // Get navbar configuration
   const config = useNavbarConfig();
 
@@ -62,18 +57,6 @@ export function useNavbar(): UseNavbarReturn {
     src: config.logo.src,
     alt: t(config.logo.alt),
     title: t(config.logo.title),
-  };
-
-  // Auth configuration with i18n and locale prefix
-  const auth: AuthConfig = {
-    login: {
-      text: t(config.auth.login.text),
-      url: `/${locale}${config.auth.login.url}`
-    },
-    signup: {
-      text: t(config.auth.signup.text),
-      url: `/${locale}${config.auth.signup.url}`
-    },
   };
 
   // Function to smooth scroll to specified element
@@ -117,11 +100,7 @@ export function useNavbar(): UseNavbarReturn {
   return {
     logo,
     menu,
-    auth,
     locale,
-    isAuthenticated,
-    isLoading,
-    isInitialized,
     handlePricingClick,
   };
 } 

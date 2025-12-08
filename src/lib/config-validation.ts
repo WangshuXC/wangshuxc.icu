@@ -36,14 +36,6 @@ export const appConfigSchema = z.object({
       creator: z.string().min(1, 'Twitter creator is required'),
     }),
   }),
-  admin: z.object({
-    emails: z.array(z.string().email('Invalid admin email')),
-  }),
-  upload: z.object({
-    maxFileSize: z.number().positive('Max file size must be positive'),
-    allowedTypes: z.array(z.string().min(1, 'File type cannot be empty')),
-    maxFiles: z.number().positive('Max files must be positive'),
-  }),
   pagination: z.object({
     defaultPageSize: z.number().positive('Default page size must be positive'),
     maxPageSize: z.number().positive('Max page size must be positive'),
@@ -64,14 +56,6 @@ export const featuresConfigSchema = z.object({
     }),
     passwordReset: z.boolean(),
     emailVerification: z.boolean(),
-  }),
-  fileManager: z.object({
-    enabled: z.boolean(),
-    storage: z.enum(['r2', 's3']),
-    thumbnails: z.boolean(),
-    imageProcessing: z.boolean(),
-    maxFileSize: z.number().positive('Max file size must be positive'),
-    allowedTypes: z.array(z.string().min(1, 'File type cannot be empty')),
   }),
   blog: z.object({
     enabled: z.boolean(),
@@ -106,12 +90,6 @@ export const featuresConfigSchema = z.object({
       quickActions: z.boolean(),
       notifications: z.boolean(),
     }),
-  }),
-  admin: z.object({
-    enabled: z.boolean(),
-    userManagement: z.boolean(),
-    systemSettings: z.boolean(),
-    analytics: z.boolean(),
   }),
 });
 

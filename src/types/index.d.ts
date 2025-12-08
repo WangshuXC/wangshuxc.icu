@@ -30,14 +30,6 @@ export interface AppConfig {
       creator: string;
     };
   };
-  admin: {
-    emails: string[];
-  };
-  upload: {
-    maxFileSize: number;
-    allowedTypes: string[];
-    maxFiles: number;
-  };
   pagination: {
     defaultPageSize: number;
     maxPageSize: number;
@@ -88,14 +80,6 @@ export interface FeaturesConfig {
     emailVerification: boolean;
   };
 
-  fileManager: {
-    enabled: boolean;
-    storage: 'r2' | 's3';
-    thumbnails: boolean;
-    imageProcessing: boolean;
-    maxFileSize: number;
-    allowedTypes: string[];
-  };
   blog: {
     enabled: boolean;
     commentsEnabled: boolean;
@@ -129,12 +113,6 @@ export interface FeaturesConfig {
       quickActions: boolean;
       notifications: boolean;
     };
-  };
-  admin: {
-    enabled: boolean;
-    userManagement: boolean;
-    systemSettings: boolean;
-    analytics: boolean;
   };
 }
 
@@ -222,16 +200,6 @@ export interface NavbarConfig {
     src: string;
     alt: string;
     title: string;
-  };
-  auth: {
-    login: {
-      text: string;
-      url: string;
-    };
-    signup: {
-      text: string;
-      url: string;
-    };
   };
   menu: {
     items: NavbarMenuItem[];

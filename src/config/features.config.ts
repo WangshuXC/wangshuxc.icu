@@ -4,27 +4,17 @@ import type { FeaturesConfig } from "@/types";
 export const featuresConfig: FeaturesConfig = {
   // Authentication features
   auth: {
-    enabled: true,
+    enabled: false,
     providers: {
-      email: true,
-      github: true,
-      google: true,
+      email: false,
+      github: false,
+      google: false,
     },
     session: {
       maxAge: 30 * 24 * 60 * 60, // 30 days
     },
-    passwordReset: true,
-    emailVerification: true,
-  },
-
-  // File management features
-  fileManager: {
-    enabled: true,
-    storage: 'r2',
-    thumbnails: true,
-    imageProcessing: true,
-    maxFileSize: 10 * 1024 * 1024, // 10MB
-    allowedTypes: ['image/jpeg', 'image/png','image/gif'], // 支持 JPEG,GIF和PNG 格式
+    passwordReset: false,
+    emailVerification: false,
   },
 
   // Blog features
@@ -54,28 +44,21 @@ export const featuresConfig: FeaturesConfig = {
 
   // Notification features
   notifications: {
-    enabled: true,
-    emailNotifications: true,
+    enabled: false,
+    emailNotifications: false,
     pushNotifications: false,
-    inAppNotifications: true,
+    inAppNotifications: false,
   },
 
   // Dashboard features
   dashboard: {
-    enabled: true,
+    enabled: false,
     widgets: {
-      analytics: true,
-      recentActivity: true,
-      quickActions: true,
-      notifications: true,
+      analytics: false,
+      recentActivity: false,
+      quickActions: false,
+      notifications: false,
     },
   },
 
-  // Admin features
-  admin: {
-    enabled: true,
-    userManagement: true,
-    systemSettings: true,
-    analytics: true,
-  },
 }; 

@@ -42,20 +42,12 @@ export const i18nConfig: I18nConfig = {
   // Translation namespaces
   namespaces: [
     "common",
-    "auth",
-    "dashboard",
     "toast",
-    "sidebar",
     "navbar",
-    "userMenu",
-    "settings",
-    "profile",
-    "security",
     "faq",
     "blog",
     "blocks",
     "legal",
-    "fileManager",
   ],
 
   // Date and time formats for each locale

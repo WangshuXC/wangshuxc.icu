@@ -1,6 +1,5 @@
 import '@/styles/globals.css';
 
-import { AuthProvider } from '@/components/providers/auth-provider';
 import { ThemeProvider } from '@/components/providers/theme-provider';
 import { Toaster } from '@/components/ui/sonner';
 import { routing } from '@/i18n/routing';
@@ -8,7 +7,6 @@ import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 
 import { AnalyticsWrapper } from '@/components/analytics-wrapper';
-import PermissionWrapper from '@/components/auth/permission-wrapper';
 import { notFound } from 'next/navigation';
 
 export function generateStaticParams() {
@@ -31,15 +29,11 @@ export default async function LocaleLayout({
   
   return (
     <ThemeProvider>
-      <AuthProvider>
-        <PermissionWrapper>
-          <NextIntlClientProvider messages={messages} locale={locale}>
-            {children}
-            <AnalyticsWrapper />
-            <Toaster />
-          </NextIntlClientProvider>
-        </PermissionWrapper>
-      </AuthProvider>
+      <NextIntlClientProvider messages={messages} locale={locale}>
+        {children}
+        <AnalyticsWrapper />
+        <Toaster />
+      </NextIntlClientProvider>
     </ThemeProvider>
   );
 }

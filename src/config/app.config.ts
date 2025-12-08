@@ -36,18 +36,6 @@ export const appConfig: AppConfig = {
     },
   },
 
-  // Administrator configuration
-  admin: {
-    emails: process.env.ADMIN_EMAILS?.split(',').map(email => email.trim()).filter(Boolean) || [],
-  },
-
-  // File upload configuration
-  upload: {
-    maxFileSize: 10 * 1024 * 1024, // 10MB
-    allowedTypes: ['image/jpeg', 'image/png','image/gif'], // 支持JPEG,PNG和GIF格式
-    maxFiles: 5,
-  },
-
   // Pagination configuration
   pagination: {
     defaultPageSize: 10,
