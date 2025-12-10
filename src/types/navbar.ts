@@ -7,7 +7,6 @@ export interface MenuItem {
   description?: string;
   icon?: JSX.Element;
   items?: MenuItem[];
-  onClick?: () => void;
 }
 
 // Logo配置类型
@@ -23,7 +22,6 @@ export interface NavbarProps {
   logo: LogoConfig;
   menu: MenuItem[];
   locale: string;
-  onPricingClick: () => void;
 }
 
 // useNavbar Hook返回类型
@@ -31,5 +29,4 @@ export interface UseNavbarReturn {
   logo: LogoConfig;
   menu: MenuItem[];
   locale: string;
-  handlePricingClick: () => void;
 } 

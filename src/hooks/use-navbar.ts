@@ -1,4 +1,3 @@
-
 import { useParams, useRouter } from 'next/navigation';
 import { useNavbarConfig } from '@/hooks/use-config';
 import { Book, Sunset, Trees, Zap } from 'lucide-react';
@@ -36,7 +35,6 @@ const translateMenuItem = (item: NavbarMenuItem, t: (key: string) => string, loc
     description: item.description ? t(item.description) : undefined,
     icon: getIconComponent(item.icon),
     items: item.items?.map(subItem => translateMenuItem(subItem, t, locale)),
-    onClick: item.onClick ? () => {} : undefined, // Will be handled in component
   };
 };
 
@@ -44,7 +42,6 @@ const translateMenuItem = (item: NavbarMenuItem, t: (key: string) => string, loc
 
 export function useNavbar(): UseNavbarReturn {
   const params = useParams();
-  const router = useRouter();
   const locale = (params?.locale as string) || 'en';
   const t = useTranslations('navbar');
 
@@ -59,48 +56,14 @@ export function useNavbar(): UseNavbarReturn {
     title: t(config.logo.title),
   };
 
-  // Function to smooth scroll to specified element
-  const scrollToElement = (elementId: string) => {
-    const element = document.getElementById(elementId);
-    if (element) {
-      element.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      });
-    }
-  };
-
-  // Handle pricing click event
-  const handlePricingClick = () => {
-    const currentPath = window.location.pathname;
-    const homePath = `/${locale}`;
-
-    if (currentPath === homePath || currentPath === `${homePath}/`) {
-      scrollToElement('pricing');
-    } else {
-      router.push(`${homePath}#pricing`);
-      setTimeout(() => {
-        scrollToElement('pricing');
-      }, 100);
-    }
-  };
-
   // Menu configuration with i18n
   const menu: MenuItem[] = config.menu.items.map(item => {
-    const translatedItem = translateMenuItem(item, t, locale);
-
-    // Handle special onClick handlers
-    if (item.onClick === 'handlePricingClick') {
-      translatedItem.onClick = handlePricingClick;
-    }
-
-    return translatedItem;
+    return translateMenuItem(item, t, locale);
   });
 
   return {
     logo,
     menu,
     locale,
-    handlePricingClick,
   };
 } 
