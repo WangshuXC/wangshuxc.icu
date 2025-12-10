@@ -171,6 +171,7 @@ export interface NavbarMenuItem {
   description?: string;
   icon?: string; // Icon name for config, will be resolved to JSX.Element in component
   items?: NavbarMenuItem[];
+  onClick?: string; // Function name for special handlers like 'handlePricingClick'
 }
 
 export interface SidebarGroup {
