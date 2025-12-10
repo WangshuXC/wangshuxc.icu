@@ -24,7 +24,7 @@ const config: NextConfig = {
       bodySizeLimit: '10mb',
     },
   },
-  serverExternalPackages: ['@aws-sdk/client-s3'],
+  serverExternalPackages: ['@aws-sdk/client-s3', 'pino', 'pino-pretty', 'thread-stream'],
   output: 'standalone',
 };
 
