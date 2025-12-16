@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import Image from "next/image";
 
@@ -14,27 +14,70 @@ interface TiltedImageConfig {
   src: string;
   /** 图片描述 */
   alt: string;
-  /** X轴偏移量 */
-  x: number;
-  /** Y轴偏移量 */
-  y: number;
 }
 
 // 倾斜图片数据 - 可在此处替换图片
 const TILTED_IMAGES: TiltedImageConfig[] = [
-  { src: "/introImages/7.jpg", alt: "Photo 1", x: -950, y: 150 },
-  { src: "/introImages/5.jpg", alt: "Photo 2", x: -465, y: 150 },
-  { src: "/introImages/2.jpg", alt: "Photo 4", x: 510, y: 150 },
-  { src: "/introImages/8.jpg", alt: "Photo 5", x: 1000, y: 150 },
-  { src: "/introImages/3.jpg", alt: "Photo 6", x: -860, y: 560 },
-  { src: "/introImages/1.jpg", alt: "Photo 7", x: -390, y: 570 },
-  { src: "/introImages/4.jpg", alt: "Photo 8", x: 110, y: 560 },
-  { src: "/introImages/5.jpg", alt: "Photo 9", x: 600, y: 560 },
-  { src: "/introImages/1.jpg", alt: "Photo 10", x: 1000, y: 650 },
+  { src: "/introImages/7.jpg", alt: "Photo 1" },
+  { src: "/introImages/5.jpg", alt: "Photo 2" },
+  { src: "/images/qb.jpg", alt: "Photo qb" },
+  { src: "/introImages/2.jpg", alt: "Photo 3" },
+  { src: "/introImages/8.jpg", alt: "Photo 4" },
+  { src: "/introImages/3.jpg", alt: "Photo 5" },
+  { src: "/introImages/1.jpg", alt: "Photo 6" },
+  { src: "/introImages/4.jpg", alt: "Photo 7" },
+  { src: "/introImages/5.jpg", alt: "Photo 8" },
 ];
+
+// 将图片均分为两行
+const ROW1_IMAGES = TILTED_IMAGES.slice(0, 5);
+const ROW2_IMAGES = TILTED_IMAGES.slice(3, 8);
+
+// 响应式尺寸配置
+function useResponsiveSizes() {
+  const [sizes, setSizes] = useState({
+    qbWidth: 280,
+    stackImageWidth: 250,
+    gap: 150,
+    isMobile: false,
+  });
+
+  useEffect(() => {
+    function updateSizes() {
+      const width = window.innerWidth;
+      const isMobile = width < 768;
+      
+      if (isMobile) {
+        // 移动端：根据屏幕宽度动态计算
+        const qbWidth = Math.min(width * 0.5, 180);
+        setSizes({
+          qbWidth,
+          stackImageWidth: qbWidth * 0.85,
+          gap: Math.min(width * 0.25, 100),
+          isMobile: true,
+        });
+      } else {
+        // 桌面端：使用原始尺寸
+        setSizes({
+          qbWidth: 280,
+          stackImageWidth: 250,
+          gap: 150,
+          isMobile: false,
+        });
+      }
+    }
+
+    updateSizes();
+    window.addEventListener("resize", updateSizes);
+    return () => window.removeEventListener("resize", updateSizes);
+  }, []);
+
+  return sizes;
+}
 
 export function SecondSection() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { qbWidth, stackImageWidth, gap, isMobile } = useResponsiveSizes();
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -49,25 +92,25 @@ export function SecondSection() {
   // nankai 透明度
   const nankaiOpacity = useTransform(scrollYProgress, [0.15, 0.3], [1, 0]);
   
-  // nankai 外层容器宽度变化 (初始宽度 -> 280px)
-  // 初始宽度 = 高度 * NANKAI_ASPECT = (280 / QB_ASPECT) * NANKAI_ASPECT
-  const nankaiInitialWidth = (280 / QB_ASPECT) * NANKAI_ASPECT;
-  const nankaiWidth = useTransform(scrollYProgress, [0, 0.25], [nankaiInitialWidth, 280]);
+  // nankai 外层容器宽度变化 (初始宽度 -> qbWidth)
+  // 初始宽度 = 高度 * NANKAI_ASPECT = (qbWidth / QB_ASPECT) * NANKAI_ASPECT
+  const nankaiInitialWidth = (qbWidth / QB_ASPECT) * NANKAI_ASPECT;
+  const nankaiWidth = useTransform(scrollYProgress, [0, 0.25], [nankaiInitialWidth, qbWidth]);
+  const qbHeight = qbWidth / QB_ASPECT;
   
   // qb 图片透明度
   const qbOpacity = useTransform(scrollYProgress, [0.25, 0.3], [0, 1]);
   
   // qb 图片旋转 (0 -> 45度)
-  const qbRotateX = useTransform(scrollYProgress, [0.25, 0.6], [0, 15]);
+  const qbRotateX = useTransform(scrollYProgress, [0.25, 0.6], [0, 45]);
   const qbRotateZ = useTransform(scrollYProgress, [0.3, 0.7], [0, 45]);
   
   // qb 图片缩放和位置
   const qbScale = useTransform(scrollYProgress, [0.5, 1], [1, 0.9]);
-  const qbY = useTransform(scrollYProgress, [0.5, 1], [0, 150]);
+  const qbY = useTransform(scrollYProgress, [0.5, 1], [0, isMobile ? 80 : 150]);
   
-  // 倾斜图片堆的透明度和缩放
+  // 倾斜图片堆的透明度
   const stackOpacity = useTransform(scrollYProgress, [0.6, 1], [0, 1]);
-  const stackScale = useTransform(scrollYProgress, [0.6, 1], [0.8, 0.9]);
   
   // slogan 透明度和位置
   const sloganOpacity = useTransform(scrollYProgress, [0.6, 1], [0, 1]);
@@ -78,23 +121,23 @@ export function SecondSection() {
       ref={containerRef}
       className="relative h-[300vh] w-full mb-[25vh]"
     >
-      <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-visible">
+      <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
         
         {/* nankai 横屏图片 - 外层容器宽度随滚动减小 */}
         <motion.div
           className="absolute flex items-center justify-center overflow-hidden rounded-2xl shadow-2xl"
           style={{
             width: useTransform(nankaiWidth, (v) => `${v}px`),
-            height: `${280 / QB_ASPECT}px`, // 与qb图片高度相同
+            height: `${qbHeight}px`,
             opacity: nankaiOpacity,
-            y: 0, // 与qb图片初始y相同
+            y: 0,
           }}
         >
           <div 
             className="relative rounded-2xl"
             style={{
               width: `${nankaiInitialWidth}px`,
-              height: `${280 / QB_ASPECT}px`,
+              height: `${qbHeight}px`,
             }}
           >
             <Image
@@ -109,7 +152,7 @@ export function SecondSection() {
 
         {/* qb 竖屏图片 */}
         <motion.div
-          className="absolute flex items-center justify-center"
+          className="absolute flex items-center justify-center z-30"
           style={{
             opacity: qbOpacity,
             rotateX: qbRotateX,
@@ -122,7 +165,7 @@ export function SecondSection() {
           <div 
             className="relative rounded-2xl overflow-hidden shadow-2xl"
             style={{
-              width: "280px",
+              width: `${qbWidth}px`,
               aspectRatio: QB_ASPECT,
             }}
           >
@@ -137,49 +180,81 @@ export function SecondSection() {
 
         {/* 倾斜图片堆 */}
         <motion.div
-          className="absolute inset-0 flex items-center justify-center pointer-events-none"
+          className="absolute flex flex-col items-center pointer-events-none"
           style={{
+            y: qbY,
             opacity: stackOpacity,
-            scale: stackScale,
-            perspective: 1000,
-            rotateX: 15,
           }}
         >
-          {TILTED_IMAGES.map((img, index) => (
-            <motion.div
-              key={img.alt}
-              className="absolute rounded-2xl overflow-hidden shadow-2xl"
-              style={{
-                width: "280px",
-                aspectRatio: QB_ASPECT,
-                x: img.x,
-                y: img.y,
-                rotate: 45,
-                zIndex: index,
-              }}
-            >
-              <Image
-                src={img.src}
-                alt={img.alt}
-                fill
-                className="object-cover"
-              />
-            </motion.div>
-          ))}
+          {/* 第一行 - 中间图片(index=2)与qb重合 */}
+          <div 
+            className="flex items-center justify-center"
+            style={{ 
+              gap: `${gap}px`,
+              transform: "translateY(50%)",
+            }}
+          >
+            {ROW1_IMAGES.map((img, index) => (
+              <div
+                key={img.alt}
+                className="rounded-2xl overflow-hidden shadow-2xl shrink-0"
+                style={{
+                  width: `${stackImageWidth}px`,
+                  aspectRatio: QB_ASPECT,
+                  opacity: index === 2 ? 0 : 1,
+                  transform: "rotateX(45deg) rotateZ(45deg)",
+                }}
+              >
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  className="object-cover relative!"
+                />
+              </div>
+            ))}
+          </div>
+          {/* 第二行 */}
+          <div 
+            className="flex items-center justify-center"
+            style={{ 
+              gap: `${gap}px`,
+              transform: "translateX(4%) translateY(12%)",
+            }}
+          >
+            {ROW2_IMAGES.map((img) => (
+              <div
+                key={img.alt}
+                className="rounded-2xl overflow-hidden shadow-2xl shrink-0"
+                style={{
+                  width: `${stackImageWidth}px`,
+                  aspectRatio: QB_ASPECT,
+                  transform: "rotateX(45deg) rotateZ(45deg)",
+                }}
+              >
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  className="object-cover relative!"
+                />
+              </div>
+            ))}
+          </div>
         </motion.div>
 
         {/* Slogan */}
         <motion.div
-          className="absolute top-0 left-0 right-0 text-center z-20"
+          className="absolute top-0 left-0 right-0 text-center z-20 px-4"
           style={{
             opacity: sloganOpacity,
             y: sloganY,
           }}
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4">
+          <h2 className="text-5xl font-bold text-foreground mb-4">
             我在做什么
           </h2>
-          <p className="text-xl md:text-2xl text-muted-foreground">
+          <p className="text-base sm:text-lg md:text-2xl text-muted-foreground">
             <span className="text-sky-500 font-bold">灵犀</span>如小窗，佳景观历历
           </p>
         </motion.div>
