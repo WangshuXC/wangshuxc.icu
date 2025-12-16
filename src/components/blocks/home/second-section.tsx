@@ -6,7 +6,7 @@ import Image from "next/image";
 
 // nankai.png 是 16:9 横屏，qb.jpg 是竖屏（假设约 9:16）
 const NANKAI_ASPECT = 16 / 9;
-const QB_ASPECT = 9 / 16;
+const QB_ASPECT = 440 / 960;
 
 // 倾斜图片配置接口
 interface TiltedImageConfig {
@@ -38,7 +38,7 @@ function useResponsiveSizes() {
   const [sizes, setSizes] = useState({
     qbWidth: 280,
     stackImageWidth: 250,
-    gap: 150,
+    gap: 200,
     isMobile: false,
   });
 
@@ -61,7 +61,7 @@ function useResponsiveSizes() {
         setSizes({
           qbWidth: 280,
           stackImageWidth: 250,
-          gap: 150,
+          gap: 200,
           isMobile: false,
         });
       }
@@ -180,13 +180,12 @@ export function SecondSection() {
 
         {/* 倾斜图片堆 */}
         <motion.div
-          className="absolute flex flex-col items-center pointer-events-none"
+          className="absolute flex flex-col items-center"
           style={{
             y: qbY,
             opacity: stackOpacity,
           }}
         >
-          {/* 第一行 - 中间图片(index=2)与qb重合 */}
           <div 
             className="flex items-center justify-center"
             style={{ 
@@ -195,41 +194,26 @@ export function SecondSection() {
             }}
           >
             {ROW1_IMAGES.map((img, index) => (
-              <div
+              <motion.div
                 key={img.alt}
-                className="rounded-2xl overflow-hidden shadow-2xl shrink-0"
+                className="rounded-2xl overflow-hidden shadow-2xl shrink-0 cursor-pointer"
                 style={{
                   width: `${stackImageWidth}px`,
                   aspectRatio: QB_ASPECT,
                   opacity: index === 2 ? 0 : 1,
                   transform: "rotateX(45deg) rotateZ(45deg)",
                 }}
-              >
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  fill
-                  className="object-cover relative!"
-                />
-              </div>
-            ))}
-          </div>
-          {/* 第二行 */}
-          <div 
-            className="flex items-center justify-center"
-            style={{ 
-              gap: `${gap}px`,
-              transform: "translateX(4%) translateY(12%)",
-            }}
-          >
-            {ROW2_IMAGES.map((img) => (
-              <div
-                key={img.alt}
-                className="rounded-2xl overflow-hidden shadow-2xl shrink-0"
-                style={{
-                  width: `${stackImageWidth}px`,
-                  aspectRatio: QB_ASPECT,
-                  transform: "rotateX(45deg) rotateZ(45deg)",
+                whileHover={{
+                  scale: 1.15,
+                  y: -20,
+                  zIndex: 50,
+                  transform: "rotateX(40deg) rotateZ(45deg)",
+                  boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
+                }}
+                transition={{
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 20,
                 }}
               >
                 <Image
@@ -238,7 +222,46 @@ export function SecondSection() {
                   fill
                   className="object-cover relative!"
                 />
-              </div>
+              </motion.div>
+            ))}
+          </div>
+          
+          <div 
+            className="flex items-center justify-center"
+            style={{ 
+              gap: `${gap}px`,
+              transform: "translateX(1%) translateY(6%)",
+            }}
+          >
+            {ROW2_IMAGES.map((img) => (
+              <motion.div
+                key={img.alt}
+                className="rounded-2xl overflow-hidden shadow-2xl shrink-0 cursor-pointer"
+                style={{
+                  width: `${stackImageWidth}px`,
+                  aspectRatio: QB_ASPECT,
+                  transform: "rotateX(45deg) rotateZ(45deg)",
+                }}
+                whileHover={{
+                  scale: 1.15,
+                  y: -20,
+                  zIndex: 50,
+                  transform: "rotateX(40deg) rotateZ(45deg)",
+                  boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
+                }}
+                transition={{
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 20,
+                }}
+              >
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  className="object-cover relative!"
+                />
+              </motion.div>
             ))}
           </div>
         </motion.div>
