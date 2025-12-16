@@ -10,7 +10,7 @@ type Props = {
 
 export default function MarketingLayout({ children }: Props) {
   return (
-    <div className='flex min-h-screen flex-col relative container'>
+    <div className='flex min-h-screen min-w-screen flex-col relative container'>
       <ScrollProgress />
       <PageTransition />
       <ResizableNavbar />

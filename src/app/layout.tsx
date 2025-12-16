@@ -3,7 +3,6 @@ import '@/styles/globals.css';
 import { routing } from '@/i18n/routing';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
-import localFont from 'next/font/local';
 
 import { appConfig } from '../config/app.config';
 
@@ -57,24 +56,6 @@ const geistMono = Geist_Mono({
   fallback: ['ui-monospace', 'SFMono-Regular', 'SF Mono', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
 });
 
-const tencent = localFont({
-  src: [
-    {
-      path: '../fonts/tencent-w3.otf',
-      weight: '100 300',
-      style: 'normal',
-    },
-    {
-      path: '../fonts/tencent-w7.ttf',
-      weight: '301 900',
-      style: 'normal',
-    },
-  ],
-  variable: '--font-tencent',
-  display: 'swap',
-  fallback: ['PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'sans-serif'],
-})
-
 export default async function RootLayout({
   children,
 }: {
@@ -83,7 +64,7 @@ export default async function RootLayout({
   return (
     <html
       lang={routing.defaultLocale}
-      className={`${geist.variable} ${geistMono.variable} ${tencent.variable} antialiased`}
+      className={`${geist.variable} ${geistMono.variable} antialiased`}
       suppressHydrationWarning
     >
       <body>

@@ -48,7 +48,7 @@ export function MotionWrapper({
   delay = 0,
   duration = 0.6,
   className,
-  once = true,
+  once = false,
   amount = 0.3,
 }: MotionWrapperProps) {
   return (
@@ -81,7 +81,7 @@ export function StaggerContainer({
   children,
   className,
   staggerDelay = 0.1,
-  once = true,
+  once = false,
   amount = 0.2,
 }: StaggerContainerProps) {
   return (

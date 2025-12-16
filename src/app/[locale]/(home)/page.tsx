@@ -1,7 +1,7 @@
 "use client";
 
 import { HeroSection } from "@/components/blocks/home/hero-section";
-import { PageLoader } from "@/components/page-loader";
+import { SecondSection } from "@/components/blocks/home/second-section";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 
@@ -29,22 +29,22 @@ const ScrollToTop = dynamic(
 
 export default function HomePage() {
   return (
-    <PageLoader minDisplayTime={1000}>
-      <SmoothScrollProvider>
-        <div className='relative'>
-          <ScrollToTop />
+    <SmoothScrollProvider>
+      <div className='relative'>
+        <ScrollToTop />
 
-          <HeroSection backgroundGif='/images/alice-aris.gif' />
+        <HeroSection />
 
-          <Suspense fallback={<div className="py-16" />}>
-            <SkillsSection />
-          </Suspense>
+        <SecondSection />
 
-          <Suspense fallback={<div className="py-16" />}>
-            <TechStack />
-          </Suspense>
-        </div>
-      </SmoothScrollProvider>
-    </PageLoader>
+        <Suspense fallback={<div className="py-16" />}>
+          <SkillsSection />
+        </Suspense>
+
+        <Suspense fallback={<div className="py-16" />}>
+          <TechStack />
+        </Suspense>
+      </div>
+    </SmoothScrollProvider>
   );
 }
