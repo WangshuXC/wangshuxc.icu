@@ -121,7 +121,7 @@ export function SecondSection() {
       ref={containerRef}
       className="relative h-[300vh] w-full mb-[25vh]"
     >
-      <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
+      <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-visible">
         
         {/* nankai 横屏图片 - 外层容器宽度随滚动减小 */}
         <motion.div

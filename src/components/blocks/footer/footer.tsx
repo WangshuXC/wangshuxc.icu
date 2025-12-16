@@ -40,7 +40,7 @@ export const Footer = ({
 }: FooterProps) => {
   return (
     <section className='pt-32'>
-      <div className='container mx-auto'>
+      <div className='container mx-auto px-10'>
         <div className='flex w-full flex-col justify-between gap-10 lg:flex-row lg:items-start lg:text-left'>
           <div className='flex w-full flex-col justify-between gap-6 lg:items-start'>
             {/* Logo */}
@@ -60,7 +60,7 @@ export const Footer = ({
             </p>
           </div>
         </div>
-        <div className='mt-4 flex flex-col justify-between gap-4 border-t py-8 font-medium text-muted-foreground text-xs md:flex-row md:items-center md:text-left'>
+        <div className='mt-4 flex justify-between gap-4 border-t py-8 font-medium text-muted-foreground text-xs flex-row md:items-center md:text-left'>
           <p className='order-2 lg:order-1'>{copyright}</p>
           <Link
             href='https://github.com/WangshuXC/wangshuxc.icu'
