@@ -34,7 +34,7 @@
   },
   "techstack": {
     "heading": "Build With Modern Stack",
-    "description": "Build my SaaS application with the latest technology stack"
+    "description": "Build my personal website and blog with the latest technology stack"
   },
   "skills": {
     "heading": "Programming Skills",
@@ -203,5 +203,14 @@
   "friendLink": {
     "title": "Friend Link",
     "description": "View all friend links"
+  },
+  "programmingSection": {
+    "heading": "My Tech Stack",
+    "description": "Every line of code is an exploration"
+  },
+  "workIntroSection": {
+    "heading": "What I'm Working On",
+    "description": "{highlight} is like a small window, revealing beautiful sceneries",
+    "highlight": "Lingxi"
   }
 }

@@ -54,14 +54,14 @@ export default async function FriendLinkPage({ params }: Props) {
         </div>
 
         {/* 友链网格 */}
-        <div className='grid gap-6 sm:grid-cols-2 lg:grid-cols-3'>
+        <div className='grid gap-6 sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr'>
           {friendLinkConfig.items.map((friendLink, index) => (
             <LinkPreview key={friendLink.url + index} url={friendLink.url}>
               <Card
                 key={friendLink.url}
-                className='group relative overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-primary/20 hover:-translate-y-1'
+                className='group relative overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-primary/20 hover:-translate-y-1 h-full flex flex-col'
               >
-                <CardHeader className='relative pb-2'>
+                <CardHeader className='relative pb-2 flex-1'>
                   <CardTitle className='flex items-start justify-between gap-2'>
                     <span className='font-semibold text-lg leading-tight group-hover:text-primary transition-colors'>
                       {friendLink.name}
@@ -69,7 +69,9 @@ export default async function FriendLinkPage({ params }: Props) {
                     <ExternalLinkIcon className='mt-1 h-4 w-4 text-muted-foreground/60 transition-colors group-hover:text-primary shrink-0' />
                   </CardTitle>
                   <CardDescription className='text-sm leading-relaxed line-clamp-3'>
-                    {friendLink.description}
+                    {locale === "en" && friendLink.descriptionEn
+                      ? friendLink.descriptionEn
+                      : friendLink.description}
                   </CardDescription>
                 </CardHeader>
 

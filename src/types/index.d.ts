@@ -198,6 +198,7 @@ export interface FriendLinkConfig {
   items: {  
     name: string;
     description: string;
+    descriptionEn?: string;
     url: string;
   }[];
 }

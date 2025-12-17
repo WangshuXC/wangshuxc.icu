@@ -34,7 +34,7 @@
   },
   "techstack": {
     "heading": "现代化技术栈",
-    "description": "使用最新的技术栈构建我的SaaS应用程序"
+    "description": "使用最新的技术栈构建我的个人主页兼博客"
   },
   "skills": {
     "heading": "编程技能",
@@ -203,5 +203,14 @@
   "friendLink": {
     "title": "友链",
     "description": "查看所有友链"
+  },
+  "programmingSection": {
+    "heading": "我的技术栈",
+    "description": "每一行代码都是一次探索"
+  },
+  "workIntroSection": {
+    "heading": "我在做什么",
+    "description": "{highlight}如小窗，佳景观历历",
+    "highlight": "灵犀"
   }
 }
