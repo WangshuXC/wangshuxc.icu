@@ -123,7 +123,7 @@ export function WorkIntroSection() {
   const sloganY = useTransform(scrollYProgress, [0.6, 1], [150, 200]);
 
   return (
-    <section ref={containerRef} className='relative h-[300vh] w-full mb-[25vh]'>
+    <section ref={containerRef} className='relative h-[200vh] w-full mb-[25vh]'>
       <div className='sticky top-0 h-screen w-full flex items-center justify-center overflow-visible'>
         {/* nankai 横屏图片 - 外层容器宽度随滚动减小 */}
         <motion.div

@@ -78,7 +78,7 @@ export const Navbar = ({ children, className }: NavbarProps) => {
     <NavbarVisibleContext.Provider value={visible}>
       <motion.div
         ref={ref}
-        className={cn("sticky inset-x-0 top-5 z-40 w-full", className)}
+        className={cn("sticky inset-x-0 top-5 z-[500] w-full", className)}
       >
         {React.Children.map(children, (child) =>
           React.isValidElement(child)
