@@ -157,10 +157,10 @@ const TechStack = ({ heading, description }: TechStackProps) => {
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <MotionWrapper variant="fadeUp" className="mb-12 text-center">
-          <h2 className="mb-4 font-bold text-3xl text-foreground md:text-4xl">
+          <h2 className="mb-6 bg-linear-to-r from-foreground via-foreground/80 to-foreground bg-clip-text font-bold text-4xl text-transparent md:text-5xl lg:text-7xl tracking-tight">
             {heading || t('heading')}
           </h2>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-base sm:text-lg md:text-2xl text-muted-foreground">
             {description || t('description')}
           </p>
         </MotionWrapper>
